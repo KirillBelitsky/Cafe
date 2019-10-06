@@ -75,11 +75,12 @@
 ![Главная страница](../Mockups/mockup_mainPage.PNG)
 * Страница определённого меню
 ![Страница определённого меню](../Mockups/mockup_breakfast.PNG) 
+* Страница блюда
+![Страница блюда](../Mockups/mockup_dishPage.PNG)
 * Страница аутентификации
 ![Страница аутентификации](../Mockups/mockup_login.PNG)
 * Корзина
 ![Корзина](../Mockups/mockup_trash.PNG)
-
 
 <a name="charact_users"/>
 
