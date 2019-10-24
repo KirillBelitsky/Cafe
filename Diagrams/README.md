@@ -2,7 +2,7 @@
 
 ## Содержание
 
-1 [Диаграмма прецедентов](#precedent_diagramm) <br>
+1. [Диаграмма прецедентов](#precedent_diagramm) <br>
 1.1 [Актёры](#actors) <br>
 1.2 [Варианты использования](#variant_usages) <br>
 1.2.1 [Регистрация](#register) <br>
@@ -13,13 +13,13 @@
 1.2.6 [Просмотр корзины](#view_bucket) <br>
 1.2.7 [Редактирование продуктов в корзине](#edit_products) <br>
 1.2.8 [Оформление заказа](#create_order) <br>
-2 [Диаграммы активностей](#activity_diagramms) <br>
+2. [Диаграммы активностей](#activity_diagramms) <br>
 2.1 [Регистрация](#regist) <br>
 2.2 [Вход в систему](#login_d) <br>
 2.3 [Добавление комментария](#add_comment_d) <br>
 2.4 [Редактирование продуктов в корзине](#edit_products_d) <br>
 2.5 [Оформление заказа](#create_order_d) <br>
-3 [Диаграмма последовательности](#sequence_diagramm) <br>
+3. [Диаграмма последовательности](#sequence_diagramm) <br>
 
 <a name="precedent_diagramm"/>
 
