@@ -1,0 +1,30 @@
+.mat-toolbar {
+  justify-content: flex-start;
+  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.toolbar {
+  width: 100vw;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.toolbar {
+  align-content: space-between;
+}
+
+.toolbar button:hover {
+  background-color: navy;
+}
+
+.toolbar .username:hover {
+  background-color: red;
+}
+
+.mat-stroked-button:not([disabled]) {
+}
+
+.button-interval{
+  margin-left: 10px;
+}

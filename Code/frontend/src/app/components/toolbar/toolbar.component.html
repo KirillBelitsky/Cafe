@@ -1,3 +1,24 @@
-<p>
-  toolbar works!
-</p>
+<mat-toolbar color = "primary">
+  <div class = "toolbar">
+    <div class="log">
+       <button mat-stroked-button (click)="onLoginClick()">Login</button>
+    </div>
+
+    <div>
+       <button mat-button [routerLink]="'menu'">
+        <img src="assets/icons/Home.png" height="30" width="30"/>
+       </button>
+
+       <a mat-stroked-button class="button-interval" [routerLink]="''">Search</a>
+
+    </div>
+
+    <ng-template #loginUser>
+       <button mat-stroked-button (click)="onLogoutClick()">Logout</button>
+       <button class="username" color="red" mat-button [routerLink]="''">
+          {{userName | async}}
+          <img src="assets/icons/User.png" height="30" width="30" class="button-interval"/>
+       </button>
+    </ng-template>
+  </div>
+</mat-toolbar>

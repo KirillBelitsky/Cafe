@@ -12,4 +12,12 @@ export class ToolbarComponent implements OnInit {
   ngOnInit() {
   }
 
+  onLoginClick(): void {
+
+  }
+
+  onLogoutClick(): void {
+
+  }
+
 }
