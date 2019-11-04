@@ -20,6 +20,13 @@
 2.4 [Редактирование продуктов в корзине](#edit_products_d) <br>
 2.5 [Оформление заказа](#create_order_d) <br>
 3. [Диаграмма последовательности](#sequence_diagramm) <br>
+4. [Диаграммы состояний](#sost_diagramm) <br>
+4.1 [Регистрация](#register_state) <br>
+4.2 [Добавление продукта в корзину](#add_product_state) <br>
+4.3 [Комментирование](#comment_state) <br>
+4.4 [Создание заказа](#create_order_state) <br>
+5. [Диаграммы класов](#classes_diagramm) <br>
+6. [Совмещенная диаграмма компонентов и развертывания](#mass_diagramm) <br>
 
 <a name="precedent_diagramm"/>
 
@@ -171,3 +178,38 @@
 ## 3 Диаграмма последовательности
 Диаграмма последовательности основных вариантов использования представлена ниже:
 ![Диаграмма последовательности](Sequence/sequence.png)
+
+<a name="sost_diagramm"/>
+
+## 4 Диаграммы состояний
+
+<a name="register_state"/>
+
+### 4.1 Регистрация
+![Диаграмма состояния регистрации](State/registerNewUser.png)
+
+<a name="add_product_state"/>
+
+### 4.2 Добавление продукта в корзину
+Окно добавления продукта в корзину: https://github.com/KirillBelitsky/Cafe/blob/master/Documents/Mockups/mockup_breakfastNew.PNG
+![Диаграмма состояния добавления продукта в корзину](State/addProductToBucket.png)
+
+<a name="comment_state"/>
+
+### 4.3 Комментирование
+Пример окна с возможностью комментирования: https://github.com/KirillBelitsky/Cafe/blob/master/Documents/Mockups/mockup_dishUpdate.PNG
+![Диаграмма состояния комментирования](State/Comment.png)
+
+<a name="create_order_state"/>
+
+### 4.4 Создание заказа
+Пример окна с создание заказа: https://github.com/KirillBelitsky/Cafe/blob/master/Documents/Mockups/mockup_basket.PNG
+![Диаграмма состояния создания заказа](State/createOrder.png)
+
+<a name="classes_diagramm"/>
+
+## 5 Диаграммы классов
+
+<a name="mass_diagramm"/>
+
+## 6 Совмещенная диаграмма компонентов и развертывания
