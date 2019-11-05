@@ -186,7 +186,7 @@
 <a name="register_state"/>
 
 ### 4.1 Регистрация
-![Диаграмма состояния регистрации](State/registerNewUser.png)
+![Диаграмма состояния регистрации](State/RegisterState.png)
 
 <a name="add_product_state"/>
 
@@ -198,13 +198,13 @@
 
 ### 4.3 Комментирование
 Пример окна с возможностью комментирования: https://github.com/KirillBelitsky/Cafe/blob/master/Documents/Mockups/mockup_dishUpdate.PNG
-![Диаграмма состояния комментирования](State/Comment.png)
+![Диаграмма состояния комментирования](State/CommentState.png)
 
 <a name="create_order_state"/>
 
 ### 4.4 Создание заказа
 Пример окна с создание заказа: https://github.com/KirillBelitsky/Cafe/blob/master/Documents/Mockups/mockup_basket.PNG
-![Диаграмма состояния создания заказа](State/createOrder.png)
+![Диаграмма состояния создания заказа](State/CreateOrderState.png)
 
 <a name="classes_diagramm"/>
 
