@@ -18,7 +18,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Role saveRole(Role role) {
-        if(role != null && roleRepository.getRoleById(role.getId()) == null)
+        if(roleRepository.getRoleByRole(role.getRole()) == null)
             return roleRepository.save(role);
         else return null;
     }

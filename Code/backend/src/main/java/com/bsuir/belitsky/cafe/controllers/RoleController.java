@@ -22,12 +22,18 @@ public class RoleController {
 
     @PostMapping
     public RoleDto saveRole(@RequestBody RoleDto role) {
-        System.out.println("kyky");
-        return modelMapper.map(modelMapper.map(role, Role.class), RoleDto.class);
+        if(role != null) {
+            Role savedRole = roleService.saveRole(modelMapper.map(role, Role.class));
+            if(savedRole != null)
+                return modelMapper.map(savedRole, RoleDto.class);
+
+        }
+        return null;
     }
 
     @GetMapping("/{id}")
     public RoleDto getRoleById(@PathVariable(name = "id") String id) {
-        return modelMapper.map(roleService.getRoleById(id), RoleDto.class);
+        Role role = roleService.getRoleById(id);
+        return role != null ? modelMapper.map(role, RoleDto.class) : null;
     }
 }

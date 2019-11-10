@@ -7,6 +7,9 @@ import { MenuComponent } from './components/menu/menu.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
+import {UserService} from './services/user.service';
+import {RoleService} from './services/role.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,8 +22,10 @@ import {MaterialModule} from './material.module';
     MaterialModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [UserService,
+              RoleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -9,6 +9,6 @@ public class UserController {
     @RequestMapping(value = "/ky", method = RequestMethod.GET)
     @ResponseBody
     public String getMessage() {
-        return "kyky";
+        return "ky Kirill!";
     }
 }
