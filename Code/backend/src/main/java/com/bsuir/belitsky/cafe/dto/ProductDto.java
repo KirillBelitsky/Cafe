@@ -18,5 +18,7 @@ public class ProductDto {
     @NotNull
     private double price;
     @NotNull
+    private double mass;
+    @NotNull
     private String description;
 }

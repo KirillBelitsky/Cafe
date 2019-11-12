@@ -10,12 +10,15 @@ import {MaterialModule} from './material.module';
 import {UserService} from './services/user.service';
 import {RoleService} from './services/role.service';
 import {HttpClientModule} from '@angular/common/http';
+import {ProductPageComponent} from './components/product-page/product-page.component';
+import {ProductService} from './services/product.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
-    MenuComponent
+    MenuComponent,
+    ProductPageComponent
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,12 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule
   ],
   providers: [UserService,
-              RoleService],
+              RoleService,
+              ProductService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor() {
+  }
+}

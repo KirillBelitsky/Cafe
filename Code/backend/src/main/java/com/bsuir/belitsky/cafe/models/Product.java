@@ -24,6 +24,7 @@ public class Product {
     private String id;
     private String name;
     private double price;
+    private double mass;
     private String description;
 
     @Override
@@ -32,6 +33,7 @@ public class Product {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", price=" + price +
+                ", mass=" + mass +
                 ", description='" + description + '\'' +
                 '}';
     }
