@@ -6,7 +6,7 @@ import {catchError} from 'rxjs/operators';
 
 @Injectable()
 export class ProductService {
-  private PRODUCT_URL = '/api/product/';
+  private PRODUCT_URL = '/api/product';
 
   constructor(private httpClient: HttpClient) {
   }

@@ -12,6 +12,18 @@ import {RoleService} from './services/role.service';
 import {HttpClientModule} from '@angular/common/http';
 import {ProductPageComponent} from './components/product-page/product-page.component';
 import {ProductService} from './services/product.service';
+import {ProductImageService} from './utils/product-image-service';
+import {DevToolsExtension, NgRedux, NgReduxModule} from '@angular-redux/store';
+import {AppState} from './store';
+import {NgReduxRouter, NgReduxRouterModule} from '@angular-redux/router';
+import {EpicService} from './store/epics/epic.service';
+import {GlobalUserStorageService} from './services/global-storage.service';
+import {createEpicMiddleware} from 'redux-observable';
+import {reducers} from './store/reducers/reducers';
+import {createLogger} from 'redux-logger';
+import {EpicsModule} from './store/epics/epics.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {AutounsibscribeService} from './services/autounsibscribe.service';
 
 @NgModule({
   declarations: [
@@ -22,18 +34,43 @@ import {ProductService} from './services/product.service';
   ],
   imports: [
     BrowserModule,
+    EpicsModule,
+    FormsModule,
+    ReactiveFormsModule,
     MaterialModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgReduxModule,
+    NgReduxRouterModule.forRoot()
   ],
   providers: [UserService,
               RoleService,
-              ProductService],
+              ProductService,
+              ProductImageService,
+              AutounsibscribeService,
+              EpicService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
 
-  constructor() {
+  constructor(private ngRedux: NgRedux<AppState>,
+              private ngReduxRouter: NgReduxRouter,
+              private epicService: EpicService,
+              private devTools: DevToolsExtension,
+              private localStorageService: GlobalUserStorageService) {
+    const epics = this.epicService.getEpics();
+    const middleware = createEpicMiddleware();
+    let enhancers = [];
+    if (devTools.isEnabled()) {
+      enhancers = [devTools.enhancer()];
+    }
+
+    const currentUser = localStorageService.currentUser;
+    const INITIAL_STATE: AppState = {currentUser} as AppState;
+
+    ngRedux.configureStore(reducers, INITIAL_STATE, [middleware, createLogger()], enhancers);
+    middleware.run(epics as any);
+    ngReduxRouter.initialize(state => state.route);
   }
 }

@@ -8,9 +8,6 @@
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
-}
-
-.toolbar {
   align-content: space-between;
 }
 

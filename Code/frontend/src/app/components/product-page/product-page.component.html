@@ -1,9 +1,24 @@
 <div class="container">
   <div class="container-inner">
     <div class="header">
-      <h1>{{product.name}}</h1>
+      <h1>{{this.product?.name}}</h1>
     </div>
     <div class="info">
+      <div class="info-img">
+        <img mat-card-image [src]="getImage()">
+      </div>
+      <div class="info-info">
+        <div class="info-name">
+          {{this.product?.name}}
+        </div>
+        <div class="info-price">
+          <p>Цена: {{this.product?.price}} BYN</p>
+        </div>
+        <button mat-stroked-button color="primary">Заказать</button>
+      </div>
+    </div>
+    <div class="descr">
+      <p>{{this.product?.description}}</p>
     </div>
   </div>
 </div>
