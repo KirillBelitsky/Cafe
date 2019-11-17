@@ -1,6 +1,6 @@
 import {Subject} from 'rxjs';
 
-export class AutounsibscribeService {
+export class AutoUnsibscribeService {
 
   protected streamEndSubject = new Subject();
 

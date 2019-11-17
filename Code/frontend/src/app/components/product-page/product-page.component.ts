@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Product} from '../../models/product.model';
-import {AutounsibscribeService} from '../../services/autounsibscribe.service';
+import {AutoUnsibscribeService} from '../../services/auto-unsibscribe.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../../services/product.service';
 import {Observable} from 'rxjs';
@@ -11,7 +11,7 @@ import {ProductImageService} from '../../utils/product-image-service';
   templateUrl: './product-page.component.html',
   styleUrls: ['./product-page.component.css']
 })
-export class ProductPageComponent extends AutounsibscribeService implements OnInit, OnDestroy {
+export class ProductPageComponent extends AutoUnsibscribeService implements OnInit, OnDestroy {
 
   private product: Product;
   private id: string;

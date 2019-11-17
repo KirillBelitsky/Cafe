@@ -16,4 +16,9 @@ export class UserService {
     return this.httpClient.get<User>(`${this.USERS_URL}/${id}`)
       .pipe(catchError((error: any) => throwError(error.error)));
   }
+
+  saveUser(user: User): Observable<User> {
+    return this.httpClient.post<User>(`${this.USERS_URL}`, user)
+      .pipe(catchError((error: any) => throwError(error.error)));
+  }
 }

@@ -23,7 +23,9 @@ import {reducers} from './store/reducers/reducers';
 import {createLogger} from 'redux-logger';
 import {EpicsModule} from './store/epics/epics.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {AutounsibscribeService} from './services/autounsibscribe.service';
+import {AutoUnsibscribeService} from './services/auto-unsibscribe.service';
+import {DialogsModule} from './components/dialogs/dialogs.module';
+import {AuthService} from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -42,14 +44,17 @@ import {AutounsibscribeService} from './services/autounsibscribe.service';
     BrowserAnimationsModule,
     HttpClientModule,
     NgReduxModule,
-    NgReduxRouterModule.forRoot()
+    NgReduxRouterModule.forRoot(),
+    DialogsModule
   ],
   providers: [UserService,
               RoleService,
               ProductService,
               ProductImageService,
-              AutounsibscribeService,
-              EpicService],
+              AutoUnsibscribeService,
+              EpicService,
+              AuthService,
+              GlobalUserStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
