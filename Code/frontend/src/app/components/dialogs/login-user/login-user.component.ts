@@ -38,7 +38,7 @@ export class LoginUserComponent extends AutoUnsibscribeService implements OnInit
     this.credentialForm = this.fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required],
-      phoneNumber: ['', Validators.required]
+      login: ['', Validators.required]
     });
   }
 

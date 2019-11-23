@@ -11,6 +11,7 @@ import {catchError} from 'rxjs/operators';
 export class AuthService {
 
   private LOGIN_USER = '/api/authentication/login';
+  private REGISTER_USER = '/api/authentication/register';
 
   constructor(private localStorage: GlobalUserStorageService,
               private httpClient: HttpClient) {
@@ -18,6 +19,11 @@ export class AuthService {
 
   login(credential: Credential): Observable<UserTokenModel> {
     return this.httpClient.post<UserTokenModel>(`${this.LOGIN_USER}`, credential)
+      .pipe(catchError(err => throwError(err.error)));
+  }
+
+  register(credential: Credential): Observable<User> {
+    return this.httpClient.post<User>(`${this.REGISTER_USER}`, credential)
       .pipe(catchError(err => throwError(err.error)));
   }
 }

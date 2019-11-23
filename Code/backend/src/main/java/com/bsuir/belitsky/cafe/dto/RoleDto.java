@@ -19,6 +19,4 @@ public class RoleDto {
     private String id;
     @NotNull
     private String role;
-    @Null
-    private Set<UserDto> users;
 }

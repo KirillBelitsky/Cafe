@@ -10,4 +10,6 @@ public interface UserService {
     User saveUser(User user);
     User getUserById(String id);
     List<User> findAll();
+    User getUserByEmail(String email);
+    User getUserByLogin(String login);
 }

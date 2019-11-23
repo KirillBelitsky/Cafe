@@ -23,7 +23,7 @@ public class User {
             strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
     private String email;
-    private String phoneNumber;
+    private String login;
     private String password;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -37,7 +37,7 @@ public class User {
         return "User{" +
                 "id='" + id + '\'' +
                 ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+                ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", roles=" + roles +
                 '}';

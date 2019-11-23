@@ -3,7 +3,13 @@ import {GlobalUserStorageService} from '../../services/global-storage.service';
 import {AuthService} from '../../services/auth.service';
 import {AnyAction} from 'redux';
 import {ActionsObservable} from 'redux-observable';
-import {LOGIN_USER, loginUserActionFailed, LOGOUT_USER, updateCurrentUserAction} from '../actions/current-user.actions';
+import {
+  LOGIN_USER, loginUserAction,
+  loginUserActionFailed,
+  LOGOUT_USER,
+  REGISTER_USER, registerUserActionFailed, registerUserActionSuccess,
+  updateCurrentUserAction
+} from '../actions/current-user.actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
 
@@ -29,6 +35,25 @@ export class CurrentUserEpic {
             })
           );
       })
+    );
+  }
+
+  register$ = (action$: ActionsObservable<AnyAction>) => {
+    return action$.ofType(REGISTER_USER).pipe(
+      switchMap(({payload}) => {
+        return this.authService.register(payload.credential)
+          .pipe(
+            map(user => {
+              of(registerUserActionSuccess(user));
+              of(loginUserAction({phoneNumber: user.phoneNumber,
+              email: user.email, password: user.password}));
+            }),
+            catchError(err => {
+              return of(registerUserActionFailed());
+            })
+          );
+        }
+      )
     );
   }
 

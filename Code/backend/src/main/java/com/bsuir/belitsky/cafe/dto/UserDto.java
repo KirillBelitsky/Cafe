@@ -1,5 +1,6 @@
 package com.bsuir.belitsky.cafe.dto;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,6 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 import java.util.Set;
 
-@AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
@@ -19,13 +19,13 @@ public class UserDto {
     private String id;
 
     @NotNull
+    private String login;
+
+    @NotNull
     private String email;
 
     @NotNull
     private String password;
-
-    @NotNull
-    private String phoneNumber;
 
     @Null
     private Set<RoleDto> roles;

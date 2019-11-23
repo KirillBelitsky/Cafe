@@ -1,5 +1,5 @@
 export interface Credential {
-  readonly phoneNumber: string;
+  readonly login: string;
   readonly email: string;
   readonly password: string;
 }

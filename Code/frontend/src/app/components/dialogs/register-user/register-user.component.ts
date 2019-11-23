@@ -5,6 +5,7 @@ import {AutoUnsibscribeService} from '../../../services/auto-unsibscribe.service
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {NgRedux} from '@angular-redux/store';
 import {AppState} from '../../../store';
+import {REGISTER_USER, registerUserAction} from '../../../store/actions/current-user.actions';
 
 @Component({
   selector: 'app-register-user',
@@ -24,7 +25,8 @@ export class RegisterUserComponent extends AutoUnsibscribeService implements OnI
   ngOnInit() {
     this.initialize();
     this.dialogRef.afterClosed().subscribe(result => {
-      if(result !== undefined) {
+      if (result !== undefined) {
+        this.ngRedux.dispatch(registerUserAction(result));
       }
     });
   }
@@ -35,7 +37,7 @@ export class RegisterUserComponent extends AutoUnsibscribeService implements OnI
 
   private initialize(): void {
     this.credentialForm = this.formBuider.group({
-      phoneNumber: ['', Validators.required],
+      login: ['', Validators.required],
       email: ['', Validators.required],
       password: ['', Validators.required]
     });

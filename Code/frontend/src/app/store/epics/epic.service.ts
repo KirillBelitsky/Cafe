@@ -15,7 +15,8 @@ export class EpicService {
       this.productEpic.fetchProducts$,
       this.userEpic.selectUser$,
       this.currentUser.login$,
-      this.currentUser.logout$
+      this.currentUser.logout$,
+      this.currentUser.register$
     );
   }
 }
