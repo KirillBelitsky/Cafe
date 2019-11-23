@@ -1,15 +1,15 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { MenuComponent } from './components/menu/menu.component';
-import { AppRoutingModule } from './app-routing.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {AppComponent} from './app.component';
+import {ToolbarComponent} from './components/toolbar/toolbar.component';
+import {MenuComponent} from './components/menu/menu.component';
+import {AppRoutingModule} from './app-routing.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MaterialModule} from './material.module';
 import {UserService} from './services/user.service';
 import {RoleService} from './services/role.service';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ProductPageComponent} from './components/product-page/product-page.component';
 import {ProductService} from './services/product.service';
 import {ProductImageService} from './utils/product-image-service';
@@ -26,6 +26,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {AutoUnsibscribeService} from './services/auto-unsibscribe.service';
 import {DialogsModule} from './components/dialogs/dialogs.module';
 import {AuthService} from './services/auth.service';
+import {JwtInterceptor} from './services/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -48,13 +49,14 @@ import {AuthService} from './services/auth.service';
     DialogsModule
   ],
   providers: [UserService,
-              RoleService,
-              ProductService,
-              ProductImageService,
-              AutoUnsibscribeService,
-              EpicService,
-              AuthService,
-              GlobalUserStorageService],
+    RoleService,
+    ProductService,
+    ProductImageService,
+    AutoUnsibscribeService,
+    EpicService,
+    AuthService,
+    GlobalUserStorageService,
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

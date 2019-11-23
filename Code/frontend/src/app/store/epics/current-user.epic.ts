@@ -45,7 +45,7 @@ export class CurrentUserEpic {
           .pipe(
             map(user => {
               of(registerUserActionSuccess(user));
-              of(loginUserAction({phoneNumber: user.phoneNumber,
+              of(loginUserAction({login: user.login,
               email: user.email, password: user.password}));
             }),
             catchError(err => {
