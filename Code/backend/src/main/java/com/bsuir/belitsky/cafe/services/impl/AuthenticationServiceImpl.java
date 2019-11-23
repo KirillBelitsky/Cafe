@@ -2,9 +2,9 @@ package com.bsuir.belitsky.cafe.services.impl;
 
 import com.bsuir.belitsky.cafe.config.JwtTokenUtil;
 import com.bsuir.belitsky.cafe.dto.UserDto;
-import com.bsuir.belitsky.cafe.models.AuthToken;
-import com.bsuir.belitsky.cafe.models.User;
-import com.bsuir.belitsky.cafe.models.UserToken;
+import com.bsuir.belitsky.cafe.entity.AuthToken;
+import com.bsuir.belitsky.cafe.entity.User;
+import com.bsuir.belitsky.cafe.entity.UserToken;
 import com.bsuir.belitsky.cafe.services.AuthenticationService;
 import com.bsuir.belitsky.cafe.services.UserService;
 import org.modelmapper.ModelMapper;

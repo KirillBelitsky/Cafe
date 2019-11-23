@@ -1,4 +1,4 @@
-package com.bsuir.belitsky.cafe.models;
+package com.bsuir.belitsky.cafe.entity;
 
 import com.bsuir.belitsky.cafe.dto.UserDto;
 import lombok.AllArgsConstructor;

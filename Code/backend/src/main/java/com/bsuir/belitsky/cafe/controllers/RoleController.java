@@ -1,7 +1,7 @@
 package com.bsuir.belitsky.cafe.controllers;
 
 import com.bsuir.belitsky.cafe.dto.RoleDto;
-import com.bsuir.belitsky.cafe.models.Role;
+import com.bsuir.belitsky.cafe.entity.Role;
 import com.bsuir.belitsky.cafe.services.RoleService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

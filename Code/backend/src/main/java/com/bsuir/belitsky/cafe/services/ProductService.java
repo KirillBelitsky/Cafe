@@ -1,6 +1,6 @@
 package com.bsuir.belitsky.cafe.services;
 
-import com.bsuir.belitsky.cafe.models.Product;
+import com.bsuir.belitsky.cafe.entity.Product;
 
 import java.util.List;
 

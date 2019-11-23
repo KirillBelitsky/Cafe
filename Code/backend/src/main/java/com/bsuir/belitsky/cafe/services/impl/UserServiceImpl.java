@@ -1,8 +1,7 @@
 package com.bsuir.belitsky.cafe.services.impl;
 
-import com.bsuir.belitsky.cafe.models.Role;
-import com.bsuir.belitsky.cafe.models.User;
-import com.bsuir.belitsky.cafe.repository.RoleRepository;
+import com.bsuir.belitsky.cafe.entity.Role;
+import com.bsuir.belitsky.cafe.entity.User;
 import com.bsuir.belitsky.cafe.repository.UserRepository;
 import com.bsuir.belitsky.cafe.services.RoleService;
 import com.bsuir.belitsky.cafe.services.UserService;

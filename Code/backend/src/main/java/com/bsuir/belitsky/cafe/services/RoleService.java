@@ -1,6 +1,6 @@
 package com.bsuir.belitsky.cafe.services;
 
-import com.bsuir.belitsky.cafe.models.Role;
+import com.bsuir.belitsky.cafe.entity.Role;
 
 public interface RoleService {
     Role saveRole(Role role);

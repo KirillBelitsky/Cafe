@@ -1,7 +1,7 @@
 package com.bsuir.belitsky.cafe.controllers;
 
 import com.bsuir.belitsky.cafe.dto.ProductDto;
-import com.bsuir.belitsky.cafe.models.Product;
+import com.bsuir.belitsky.cafe.entity.Product;
 import com.bsuir.belitsky.cafe.services.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.web.bind.annotation.*;

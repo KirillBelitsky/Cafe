@@ -1,6 +1,6 @@
 package com.bsuir.belitsky.cafe.services.impl;
 
-import com.bsuir.belitsky.cafe.models.User;
+import com.bsuir.belitsky.cafe.entity.User;
 import com.bsuir.belitsky.cafe.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;

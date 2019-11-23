@@ -1,6 +1,6 @@
 package com.bsuir.belitsky.cafe.services.impl;
 
-import com.bsuir.belitsky.cafe.models.Role;
+import com.bsuir.belitsky.cafe.entity.Role;
 import com.bsuir.belitsky.cafe.repository.RoleRepository;
 import com.bsuir.belitsky.cafe.services.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;

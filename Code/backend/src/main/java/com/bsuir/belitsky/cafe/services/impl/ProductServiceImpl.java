@@ -1,6 +1,6 @@
 package com.bsuir.belitsky.cafe.services.impl;
 
-import com.bsuir.belitsky.cafe.models.Product;
+import com.bsuir.belitsky.cafe.entity.Product;
 import com.bsuir.belitsky.cafe.repository.ProductRepository;
 import com.bsuir.belitsky.cafe.services.ProductService;
 import org.springframework.stereotype.Service;

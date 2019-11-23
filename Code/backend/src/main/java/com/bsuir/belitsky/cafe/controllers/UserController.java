@@ -1,7 +1,7 @@
 package com.bsuir.belitsky.cafe.controllers;
 
 import com.bsuir.belitsky.cafe.dto.UserDto;
-import com.bsuir.belitsky.cafe.models.User;
+import com.bsuir.belitsky.cafe.entity.User;
 import com.bsuir.belitsky.cafe.services.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;

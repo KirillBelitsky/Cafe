@@ -1,7 +1,6 @@
 package com.bsuir.belitsky.cafe.services;
 
-import com.bsuir.belitsky.cafe.models.User;
-import org.springframework.stereotype.Service;
+import com.bsuir.belitsky.cafe.entity.User;
 
 import java.util.List;
 

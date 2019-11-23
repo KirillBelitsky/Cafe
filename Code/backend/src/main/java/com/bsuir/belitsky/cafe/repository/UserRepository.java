@@ -1,6 +1,6 @@
 package com.bsuir.belitsky.cafe.repository;
 
-import com.bsuir.belitsky.cafe.models.User;
+import com.bsuir.belitsky.cafe.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
