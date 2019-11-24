@@ -12,7 +12,7 @@ export const UPDATE_CURRENT_USER = '[Current T] Update Current User';
 export function loginUserAction(credential: Credential) {
   return {
     type: LOGIN_USER,
-    payload: {credential}
+    payload: { credential }
   };
 }
 
@@ -31,14 +31,13 @@ export function logoutUserAction() {
 export function registerUserAction(credential: Credential) {
   return {
     type: REGISTER_USER,
-    payload: {credential}
+    payload: { credential }
   };
 }
 
-export function registerUserActionSuccess(user: User) {
+export function registerUserActionSuccess() {
   return {
     type: REGISTER_USER_SUCCESS,
-    payload: {user}
   };
 }
 
@@ -51,6 +50,6 @@ export function registerUserActionFailed() {
 export function updateCurrentUserAction(user: User) {
   return {
     type: UPDATE_CURRENT_USER,
-    payload: {user}
+    payload: { user }
   };
 }

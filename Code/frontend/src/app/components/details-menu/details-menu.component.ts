@@ -5,11 +5,11 @@ import {RoleService} from '../../services/role.service';
 import {AutoUnsibscribeService} from '../../services/auto-unsibscribe.service';
 
 @Component({
-  selector: 'app-menu',
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  selector: 'app-details-menu',
+  templateUrl: './details-menu.component.html',
+  styleUrls: ['./details-menu.component.css']
 })
-export class MenuComponent extends AutoUnsibscribeService implements OnInit, OnDestroy {
+export class DetailsMenuComponent extends AutoUnsibscribeService implements OnInit, OnDestroy {
 
   constructor() {
     super();

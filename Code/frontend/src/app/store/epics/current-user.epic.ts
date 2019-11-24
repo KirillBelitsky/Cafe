@@ -12,12 +12,14 @@ import {
 } from '../actions/current-user.actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
+import {Router} from '@angular/router';
 
 @Injectable()
 export class CurrentUserEpic {
 
   constructor(private localStorage: GlobalUserStorageService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private route: Router) {
   }
 
   login$ = (action$: ActionsObservable<AnyAction>) => {
@@ -26,9 +28,9 @@ export class CurrentUserEpic {
         return this.authService.login(payload.credential)
           .pipe(
             map(userToken => {
-              this.localStorage.currentUser = {...userToken.user};
-              this.localStorage.currentToken = {...userToken.token};
-              return of(updateCurrentUserAction(userToken.user));
+              this.localStorage.currentUser = userToken.user;
+              this.localStorage.currentToken = userToken.token;
+              return updateCurrentUserAction(userToken.user);
             }),
             catchError(err => {
               return of(loginUserActionFailed());
@@ -43,13 +45,11 @@ export class CurrentUserEpic {
       switchMap(({payload}) => {
         return this.authService.register(payload.credential)
           .pipe(
-            map(user => {
-              of(registerUserActionSuccess(user));
-              of(loginUserAction({login: user.login,
-              email: user.email, password: user.password}));
-            }),
-            catchError(err => {
-              return of(registerUserActionFailed());
+            map(userToken => {
+              of(registerUserActionSuccess());
+              this.localStorage.currentUser = userToken.user;
+              this.localStorage.currentToken = userToken.token;
+              return updateCurrentUserAction(userToken.user);
             })
           );
         }
@@ -62,6 +62,7 @@ export class CurrentUserEpic {
       switchMap(({ }) => {
         this.localStorage.currentToken = null;
         this.localStorage.currentUser = null;
+        this.route.navigate(['menu']);
         return of(updateCurrentUserAction(null));
       })
     );

@@ -15,18 +15,13 @@ import java.util.Set;
 @Setter
 public class UserDto {
 
-    @Null
-    private String id;
-
     @NotNull
     private String login;
 
-    @NotNull
+    @Null
     private String email;
 
     @NotNull
     private String password;
 
-    @Null
-    private Set<RoleDto> roles;
 }

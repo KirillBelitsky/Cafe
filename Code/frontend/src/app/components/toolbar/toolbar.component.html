@@ -1,6 +1,6 @@
 <mat-toolbar color = "primary">
   <div class = "toolbar">
-    <div class="log">
+    <div class="log" *ngIf="!(currentUser | async); else loginUser">
        <button mat-stroked-button (click)="onLoginClick()">Login</button>
     </div>
 
@@ -14,11 +14,13 @@
     </div>
 
     <ng-template #loginUser>
-       <button mat-stroked-button (click)="onLogoutClick()">Logout</button>
-       <button class="username" color="red" mat-button [routerLink]="''">
-          {{userName | async}}
-          <img src="assets/icons/User.png" height="30" width="30" class="button-interval"/>
-       </button>
+      <div>
+         <button class="username" color="red" mat-button [routerLink]="''">
+            {{loginOfCurrentUser | async}}
+            <img src="assets/icons/User.png" height="30" width="30" class="button-interval"/>
+         </button>
+         <button mat-stroked-button (click)="onLogoutClick()">Logout</button>
+       </div>
     </ng-template>
   </div>
 </mat-toolbar>

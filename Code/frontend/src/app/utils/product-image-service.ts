@@ -10,5 +10,9 @@ export class ProductImageService {
   public getImageSrc(id: string): string {
     return this.map.get(id);
   }
+
+  public setImageSrc(id: string, path: string): void {
+    this.map.set(id, path);
+  }
 }
 

@@ -27,13 +27,24 @@ import {AutoUnsibscribeService} from './services/auto-unsibscribe.service';
 import {DialogsModule} from './components/dialogs/dialogs.module';
 import {AuthService} from './services/auth.service';
 import {JwtInterceptor} from './services/jwt.interceptor';
+import {DetailsMenuComponent} from './components/details-menu/details-menu.component';
+import {AuthGuardService} from './services/auth-guard.service';
+import {JwtHelperService, JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
+
+const JWT_Module_Options: JwtModuleOptions = {
+  config: {
+    tokenGetter: () => localStorage.getItem('currentToken'),
+    whitelistedDomains: ['localhost:4200/menu']
+  }
+};
 
 @NgModule({
   declarations: [
     AppComponent,
     ToolbarComponent,
     MenuComponent,
-    ProductPageComponent
+    ProductPageComponent,
+    DetailsMenuComponent
   ],
   imports: [
     BrowserModule,
@@ -46,9 +57,11 @@ import {JwtInterceptor} from './services/jwt.interceptor';
     HttpClientModule,
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
-    DialogsModule
+    DialogsModule,
+    JwtModule.forRoot(JWT_Module_Options),
   ],
-  providers: [UserService,
+  providers: [
+    UserService,
     RoleService,
     ProductService,
     ProductImageService,
@@ -56,6 +69,7 @@ import {JwtInterceptor} from './services/jwt.interceptor';
     EpicService,
     AuthService,
     GlobalUserStorageService,
+    AuthGuardService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })

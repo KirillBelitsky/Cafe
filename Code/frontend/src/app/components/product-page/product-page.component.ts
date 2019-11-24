@@ -5,6 +5,15 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../../services/product.service';
 import {Observable} from 'rxjs';
 import {ProductImageService} from '../../utils/product-image-service';
+import {NgRedux, select} from '@angular-redux/store';
+import {AppState} from '../../store';
+import {selectProductAction} from '../../store/actions/current-product.actions';
+import {
+  currentProductIsLoading,
+  selectCurrentProduct
+} from '../../store/selectors/current-product.selector';
+import {selectIsLoading} from '../../store/selectors/product.selector';
+import {selectCurrentUser, selectLoginOfCurrentUser} from '../../store/selectors/current-user.selector';
 
 @Component({
   selector: 'app-product-page',
@@ -13,18 +22,23 @@ import {ProductImageService} from '../../utils/product-image-service';
 })
 export class ProductPageComponent extends AutoUnsibscribeService implements OnInit, OnDestroy {
 
-  private product: Product;
+  @select(currentProductIsLoading)
+  private currentProductIsLoading: Observable<boolean>;
+  @select(selectIsLoading)
+  private isLoading: Observable<boolean>;
   private id: string;
-  private imageSrc: string;
+  private product: Product;
 
   constructor(private productService: ProductService,
               private router: Router,
               private route: ActivatedRoute,
-              private productImageService: ProductImageService) {
+              private productImageService: ProductImageService,
+              private ngRedux: NgRedux<AppState>) {
     super();
   }
 
   ngOnInit(): void {
+    this.id = this.route.snapshot.paramMap.get('id');
     this.getData();
   }
 
@@ -33,16 +47,17 @@ export class ProductPageComponent extends AutoUnsibscribeService implements OnIn
   }
 
   private getData(): void {
-    this.id = this.route.snapshot.paramMap.get('id');
-    this.productService.getProductById(this.id).subscribe(value => {
-      console.log(value);
-      this.product = value as Product;
-      this.imageSrc = this.productImageService.getImageSrc(this.product.id);
+    this.ngRedux.dispatch(selectProductAction(this.id));
+    this.currentProductIsLoading.subscribe((value) => {
+      if (!value) {
+        console.log(currentProductIsLoading(this.ngRedux.getState()));
+        this.product = selectCurrentProduct(this.ngRedux.getState());
+      }
     });
   }
 
   public getImage(): string {
-    return this.imageSrc;
+    return this.productImageService.getImageSrc(this.id);
   }
 
 }

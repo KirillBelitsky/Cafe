@@ -6,6 +6,7 @@ import {Observable, throwError} from 'rxjs';
 import {UserTokenModel} from '../models/user-token.model';
 import {User} from '../models/user.model';
 import {catchError} from 'rxjs/operators';
+import {JwtHelperService} from '@auth0/angular-jwt';
 
 @Injectable()
 export class AuthService {
@@ -14,16 +15,25 @@ export class AuthService {
   private REGISTER_USER = '/api/authentication/register';
 
   constructor(private localStorage: GlobalUserStorageService,
-              private httpClient: HttpClient) {
+              private httpClient: HttpClient,
+              private jwtHelperService: JwtHelperService) {
   }
 
-  login(credential: Credential): Observable<UserTokenModel> {
+  public login(credential: Credential): Observable<UserTokenModel> {
     return this.httpClient.post<UserTokenModel>(`${this.LOGIN_USER}`, credential)
       .pipe(catchError(err => throwError(err.error)));
   }
 
-  register(credential: Credential): Observable<User> {
-    return this.httpClient.post<User>(`${this.REGISTER_USER}`, credential)
+  public register(credential: Credential): Observable<UserTokenModel> {
+    return this.httpClient.post<UserTokenModel>(`${this.REGISTER_USER}`, credential)
       .pipe(catchError(err => throwError(err.error)));
+  }
+
+  public isAuthenticated(): boolean {
+    const token = this.localStorage.currentToken;
+    if (token != null) {
+      return !this.jwtHelperService.isTokenExpired(token.token);
+    }
+    return false;
   }
 }

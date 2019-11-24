@@ -7,7 +7,7 @@ import {AppState} from '../../store';
 import {logoutUserAction} from '../../store/actions/current-user.actions';
 import {Observable} from 'rxjs';
 import {User} from '../../models/user.model';
-import {selectCurrentUser} from '../../store/selectors/current-user.selector';
+import {selectCurrentUser, selectLoginOfCurrentUser} from '../../store/selectors/current-user.selector';
 import {RegisterUserComponent} from '../dialogs/register-user/register-user.component';
 
 export interface DialogData {
@@ -23,6 +23,8 @@ export class ToolbarComponent implements OnInit {
 
   @select(selectCurrentUser)
   private currentUser: Observable<User>;
+  @select(selectLoginOfCurrentUser)
+  private loginOfCurrentUser: Observable<string>;
 
   constructor(private matDialog: MatDialog,
               private ngRedux: NgRedux<AppState>) { }

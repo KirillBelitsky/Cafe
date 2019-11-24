@@ -16,12 +16,10 @@ import {DialogData} from '../../toolbar/toolbar.component';
 export class LoginUserComponent extends AutoUnsibscribeService implements OnInit, OnDestroy {
 
   private credentialForm: FormGroup;
-  private hide = true;
 
   constructor(private ngRedux: NgRedux<AppState>,
               private fb: FormBuilder,
               public dialogRef: MatDialogRef<LoginUserComponent>,
-              private matDialog: MatDialog,
               @Inject(MAT_DIALOG_DATA) public data: DialogData) {
     super();
   }
@@ -36,7 +34,6 @@ export class LoginUserComponent extends AutoUnsibscribeService implements OnInit
 
   private initialize(): void {
     this.credentialForm = this.fb.group({
-      email: ['', Validators.required],
       password: ['', Validators.required],
       login: ['', Validators.required]
     });
