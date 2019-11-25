@@ -1,0 +1,21 @@
+<div class="comment-tab" [formGroup]="commentForm" >
+  <mat-card>
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="Comments">
+
+          <div class="send-comment">
+            <div class="comment-div">
+              <mat-form-field appearance="outline" class="comment-field">
+                <mat-label>Comment</mat-label>
+                <textarea matInput [formControlName]="'commentText'"></textarea>
+              </mat-form-field>
+            </div>
+            <button mat-raised-button color="primary" (click)="onSaveClick()">Save</button>
+          </div>
+
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>

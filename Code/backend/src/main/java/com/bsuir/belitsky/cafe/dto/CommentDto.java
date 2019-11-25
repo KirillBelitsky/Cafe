@@ -21,8 +21,8 @@ public class CommentDto {
     @NotNull
     private UserDto owner;
 
-    @Null
-    private ProductDto productDto;
+    @NotNull
+    private ProductDto product;
 
     @Override
     public String toString() {
@@ -30,7 +30,7 @@ public class CommentDto {
                 "id='" + id + '\'' +
                 ", comment='" + comment + '\'' +
                 ", owner=" + owner +
-                ", productDto=" + productDto +
+                ", productDto=" + product +
                 '}';
     }
 }

@@ -50,7 +50,6 @@ export class ProductPageComponent extends AutoUnsibscribeService implements OnIn
     this.ngRedux.dispatch(selectProductAction(this.id));
     this.currentProductIsLoading.subscribe((value) => {
       if (!value) {
-        console.log(currentProductIsLoading(this.ngRedux.getState()));
         this.product = selectCurrentProduct(this.ngRedux.getState());
       }
     });

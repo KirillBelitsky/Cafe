@@ -7,6 +7,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @RestController
 @RequestMapping("/api/comments")
 public class CommentController {
@@ -36,5 +39,21 @@ public class CommentController {
             return comment != null ? modelMapper.map(comment, CommentDto.class) : null;
         }
         return null;
+    }
+
+    @GetMapping
+    public List<CommentDto> getCommentsByProductId(@RequestParam(name = "productId") String productId) {
+        return this.commentService.getCommentsByProductId(productId)
+                .stream()
+                .map(comment -> modelMapper.map(comment, CommentDto.class))
+                .collect(Collectors.toList());
+    }
+
+    @GetMapping("/all")
+    public List<CommentDto> getAllComments() {
+        return this.commentService.getAllComments()
+                .stream()
+                .map(comment -> modelMapper.map(comment, CommentDto.class))
+                .collect(Collectors.toList());
     }
 }
