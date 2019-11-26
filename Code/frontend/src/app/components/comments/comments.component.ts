@@ -1,21 +1,19 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {Product} from '../../models/product.model';
 import {AutoUnsibscribeService} from '../../services/auto-unsibscribe.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {ProductService} from '../../services/product.service';
 import {Observable} from 'rxjs';
-import {ProductImageService} from '../../utils/product-image-service';
 import {NgRedux, select} from '@angular-redux/store';
 import {AppState} from '../../store';
-import {selectProductAction} from '../../store/actions/current-product.actions';
 import {
   currentProductIsLoading,
   selectCurrentProduct
 } from '../../store/selectors/current-product.selector';
-import {selectIsLoading} from '../../store/selectors/product.selector';
-import {selectCurrentUser, selectLoginOfCurrentUser} from '../../store/selectors/current-user.selector';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {fetchCommentsAction} from '../../store/actions/comment.actions';
+import {fetchCommentsAction, saveCommentAction} from '../../store/actions/comment.actions';
+import {fetchComments, fetchCommentsIsLoading} from '../../store/selectors/comment.selector';
+import {Comment} from '../../models/comment.model';
+import {User} from '../../models/user.model';
+import {selectCurrentUser} from '../../store/selectors/current-user.selector';
 
 @Component({
   selector: 'app-comments',
@@ -26,7 +24,12 @@ export class CommentsComponent extends AutoUnsibscribeService implements OnInit,
 
   @Input('productId')
   private productId: string;
+  @select(fetchCommentsIsLoading)
+  private isLoading: Observable<boolean>;
   private commentForm: FormGroup;
+  private comments: Comment[];
+  private isComments = false;
+  private displayedColumns: string[] = ['User', 'Text'];
 
   constructor(private fb: FormBuilder,
               private ngRedux: NgRedux<AppState>) {
@@ -35,6 +38,14 @@ export class CommentsComponent extends AutoUnsibscribeService implements OnInit,
 
   ngOnInit(): void {
     this.ngRedux.dispatch(fetchCommentsAction(this.productId));
+    this.isLoading.subscribe(result => {
+      if(!result) {
+        this.comments = fetchComments(this.ngRedux.getState());
+        if(this.comments.length != 0) {
+          this.isComments = true;
+        }
+      }
+    });
 
     this.commentForm = this.fb.group({
       commentText: ['']
@@ -46,7 +57,14 @@ export class CommentsComponent extends AutoUnsibscribeService implements OnInit,
   }
 
   private onSaveClick() {
-
+    const saveComment = {
+      id: null,
+      comment: this.commentForm.controls['commentText'].value,
+      owner: selectCurrentUser(this.ngRedux.getState()),
+      product: selectCurrentProduct(this.ngRedux.getState())
+    };
+    console.log(saveComment);
+    this.ngRedux.dispatch(saveCommentAction(saveComment));
   }
 
 }

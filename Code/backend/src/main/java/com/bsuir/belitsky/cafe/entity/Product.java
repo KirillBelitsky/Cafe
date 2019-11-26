@@ -26,6 +26,10 @@ public class Product {
     private double mass;
     private String description;
 
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "menu_category_id", referencedColumnName = "id")
+    private MenuCategory menuCategory;
+
     @Override
     public String toString() {
         return "Product{" +

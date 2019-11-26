@@ -2,10 +2,10 @@ import {Injectable} from '@angular/core';
 import {ProductService} from '../../services/product.service';
 import {ActionsObservable} from 'redux-observable';
 import {AnyAction} from 'redux';
-import {FETCH_PRODUCTS, fetchProductsFailedAction, fetchProductsSuccessAction} from '../actions/product.actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {TransformService} from '../../services/utils/transform.service';
+import {FETCH_PRODUCTS, fetchProductsActionFailed, fetchProductsActionSuccess} from '../actions/product.actions';
 
 @Injectable()
 export class ProductEpic {
@@ -15,11 +15,11 @@ export class ProductEpic {
 
   fetchProducts$ = (action$: ActionsObservable<AnyAction>) => {
     return action$.ofType(FETCH_PRODUCTS).pipe(
-      switchMap(({}) => {
-        return this.productService.getAllProducts()
+      switchMap(({payload}) => {
+        return this.productService.getAllProductByMenuCategory(payload.categoryId)
           .pipe(
-            map(products => fetchProductsSuccessAction(TransformService.transformToMap(products))),
-            catchError(error => of(fetchProductsFailedAction(error.message)))
+            map(products => fetchProductsActionSuccess(TransformService.transformToMap(products))),
+            catchError(error => of(fetchProductsActionFailed(error.message)))
           );
       })
     );

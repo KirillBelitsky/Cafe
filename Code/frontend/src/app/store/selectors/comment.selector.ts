@@ -4,4 +4,4 @@ export const fetchComments = (state: AppState) => {
   return Array.from(state.commentState.comments.values());
 };
 
-export const isLoading = (state: AppState) => state.commentState.isLoading;
+export const fetchCommentsIsLoading = (state: AppState) => state.commentState.isLoading;

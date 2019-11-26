@@ -34,6 +34,14 @@ public class ProductController {
         else return null;
     }
 
+    @GetMapping("/category/{id}")
+    public List<ProductDto> getAllProductByMenuCategory(@PathVariable(name = "id") String id) {
+        return productService.getAllProductByMenuCategory(id)
+                .stream()
+                .map(value -> this.modelMapper.map(value, ProductDto.class))
+                .collect(Collectors.toList());
+    }
+
     @GetMapping("/all")
     public List<ProductDto> getAllProducts() {
         return productService.getAllProducts()

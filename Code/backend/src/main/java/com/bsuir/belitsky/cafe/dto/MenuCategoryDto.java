@@ -8,20 +8,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Null;
 
 @NoArgsConstructor
-@Getter
 @Setter
-public class UserDto {
+@Getter
+public class MenuCategoryDto {
 
     @Null
     private String id;
 
     @NotNull
-    private String login;
-
-    @Null
-    private String email;
-
-    @NotNull
-    private String password;
-
+    private String name;
 }

@@ -17,4 +17,8 @@ export class CommentService {
       .pipe(catchError((error: any) => throwError(error.error)));
   }
 
+  public saveComment(comment: Comment): Observable<Comment> {
+    return this.httpClient.post<Comment>(`${this.COMMENT_URL}`, comment)
+      .pipe(catchError((error: any) => throwError(error.error)));
+  }
 }

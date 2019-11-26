@@ -10,7 +10,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'menu', pathMatch: 'full' },
   { path: 'menu', component: MenuComponent },
   { path: 'products/:id', component: ProductPageComponent, canActivate: [AuthGuardService] },
-  { path: 'menu/:id', component: DetailsMenuComponent, canActivate: [AuthGuardService] }
+  { path: 'menu/category/:id', component: DetailsMenuComponent }
 ];
 
 @NgModule({

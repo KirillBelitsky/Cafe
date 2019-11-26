@@ -21,4 +21,6 @@ public class ProductDto {
     private double mass;
     @NotNull
     private String description;
+    @NotNull
+    private MenuCategoryDto menuCategory;
 }

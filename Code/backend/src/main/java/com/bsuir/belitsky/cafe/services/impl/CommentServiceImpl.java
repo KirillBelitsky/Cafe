@@ -20,6 +20,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public Comment saveComment(Comment comment) {
+        System.out.println(comment);
         return commentRepository.save(comment);
     }
 

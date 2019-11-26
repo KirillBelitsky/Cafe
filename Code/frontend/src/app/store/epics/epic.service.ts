@@ -22,7 +22,8 @@ export class EpicService {
       this.currentUserEpic.logout$,
       this.currentUserEpic.register$,
       this.currentProductEpic.getProductById$,
-      this.commentEpic.fetchComments$
+      this.commentEpic.fetchComments$,
+      this.commentEpic.saveComment$,
     );
   }
 }

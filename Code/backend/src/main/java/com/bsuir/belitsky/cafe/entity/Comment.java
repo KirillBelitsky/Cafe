@@ -21,11 +21,11 @@ public class Comment {
     private String id;
     private String comment;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userid", referencedColumnName = "id")
     private User owner;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "productid", referencedColumnName = "id")
     private Product product;
 
@@ -35,6 +35,7 @@ public class Comment {
                 "id='" + id + '\'' +
                 ", comment='" + comment + '\'' +
                 ", owner=" + owner +
+                ", product=" + product +
                 '}';
     }
 }
