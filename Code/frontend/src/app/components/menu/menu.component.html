@@ -1,31 +1,61 @@
+<!-- <ul class="menu"> -->
+<!--   <li class="menu__item"> -->
+<!--     <div class="dish-category"> -->
+<!--       <span class="dish-category__name">sfgsdfg</span> -->
+<!--       <img class="dish-category__image" src="/assets/images/menuBreakfast.jpg" alt=""> -->
+<!--     </div> -->
+<!--   </li> -->
+
+<!--   <li class="menu__item"> -->
+<!--     <div class="dish-category"> -->
+<!--       <span class="dish-category__name">sfgsdfg</span> -->
+<!--             <img class="dish-category__image" src="/assets/images/menuBreakfast.jpg" alt=""> -->
+<!--     </div> -->
+<!--   </li> -->
+
+<!--   <li class="menu__item"> -->
+<!--     <div class="dish-category"> -->
+<!--      <span class="dish-category__name">sfgsdfg</span> -->
+<!--            <img class="dish-category__image" src="/assets/images/menuBreakfast.jpg" alt=""> -->
+<!--     </div> -->
+<!--   </li> -->
+
+<!--   <li class="menu__item"> -->
+<!--     <div class="dish-category"> -->
+<!--       <span class="dish-category__name">sfgsdfg</span> -->
+<!--             <img class="dish-category__image" src="/assets/images/menuBreakfast.jpg" alt=""> -->
+<!--     </div> -->
+<!--   </li> -->
+<!-- </ul> -->
+
 <div class="menu-container">
   <div class="container">
     <div class="row">
       <div class="item-left">
-        <img src="/assets/images/menuBreakfast.jpg">
-        <div class="item-description">
-          <h1>Cеты</h1>
-        </div>
+        <a class="link" [routerLink]="'/menu/category/e5462f26-47d3-4f15-9fa5-71ae902122fc'">
+          <img class="image" src="/assets/images/menuBreakfast.jpg">
+          <p class="text">Cеты</p>
+        </a>
       </div>
       <div class="item-right">
-      <img src="/assets/images/menuBreakfast.jpg">
-              <div class="item-description">
-                <h1>Cеты</h1>
-              </div>
+        <a class="link" [routerLink]="'/menu/category/7c5f9a53-37b2-4a7c-962e-435042bd4423'">
+               <img class="image" src="/assets/images/menuDinner.jpg">
+               <p class="text">Cеты</p>
+            </a>
       </div>
     </div>
     <div class="row">
       <div class="item-left">
-      <img src="/assets/images/menuHotDishes.jpg">
-              <div class="item-description">
-                <h1>Cеты</h1>
-              </div>
+       <a class="link" [routerLink]="'/menu/category/919e9eb5-da7b-4292-8d68-64b4ffd2d5b7'">
+                <img class="image" src="/assets/images/menuSalats.jpg">
+                <p class="text">Cеты</p>
+              </a>
       </div>
       <div class="item-right">
-      <img src="/assets/images/menuSalats.jpg">
-              <div class="item-description">
-                <h1>Cеты</h1>
-              </div>
+       <a class="link" [routerLink]="'/menu/category/77ad9fb9-510f-41b3-9905-e735b8dbafca'">
+                <img class="image" src="/assets/images/menuPizza.png">
+                <p class="text">Cеты</p>
+              </a>
       </div>
     </div>
   </div>

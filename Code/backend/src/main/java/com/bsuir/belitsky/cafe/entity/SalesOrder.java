@@ -6,6 +6,7 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,11 +26,13 @@ public class SalesOrder {
     @JoinTable(name = "salesorder_product",
             joinColumns = @JoinColumn(name = "salesorderid"),
             inverseJoinColumns = @JoinColumn(name = "productid"))
-    private List<Product> products;
+    private List<Product> products = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userid", referencedColumnName = "id")
     private User owner;
+    private double price;
+    private boolean submitted;
 
     @Override
     public String toString() {
@@ -37,6 +40,8 @@ public class SalesOrder {
                 "id='" + id + '\'' +
                 ", products=" + products +
                 ", owner=" + owner +
+                ", price=" + price +
+                ", submitted=" + submitted +
                 '}';
     }
 }

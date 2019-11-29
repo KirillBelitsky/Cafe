@@ -32,6 +32,8 @@ import {AuthGuardService} from './services/auth-guard.service';
 import {JwtHelperService, JwtModule, JwtModuleOptions} from '@auth0/angular-jwt';
 import {CommentsComponent} from './components/comments/comments.component';
 import {CommentService} from './services/comment.service';
+import {CartComponent} from './components/cart/cart.component';
+import {SalesOrderService} from './services/sales-order.service';
 
 const JWT_Module_Options: JwtModuleOptions = {
   config: {
@@ -47,7 +49,8 @@ const JWT_Module_Options: JwtModuleOptions = {
     MenuComponent,
     ProductPageComponent,
     DetailsMenuComponent,
-    CommentsComponent
+    CommentsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,
@@ -74,6 +77,7 @@ const JWT_Module_Options: JwtModuleOptions = {
     GlobalUserStorageService,
     AuthGuardService,
     CommentService,
+    SalesOrderService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })

@@ -5,10 +5,7 @@ import com.bsuir.belitsky.cafe.entity.SalesOrder;
 import com.bsuir.belitsky.cafe.services.SalesOrderService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/salesorder")
@@ -31,5 +28,17 @@ public class SalesOrderController {
             return salesOrder != null ? modelMapper.map(salesOrder, SalesOrderDto.class) : null;
         }
         return null;
+    }
+
+    @GetMapping("/addProduct/{id}")
+    public SalesOrderDto addProductToSalesOrder(@PathVariable("id") String productId) {
+        SalesOrder salesOrder = salesOrderService.addProductToSalesOrder(productId);
+        return salesOrder != null ? modelMapper.map(salesOrder, SalesOrderDto.class) : null;
+    }
+
+    @GetMapping("/getCurrentSO")
+    public SalesOrderDto getCurrentSalesOrder() {
+        SalesOrder salesOrder = salesOrderService.getCurrentSalesOrder();
+        return salesOrder != null ? modelMapper.map(salesOrder, SalesOrderDto.class) : null;
     }
 }

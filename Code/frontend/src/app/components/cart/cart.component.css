@@ -1,0 +1,28 @@
+.container {
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+}
+
+.page {
+  margin: 20px 50px;
+}
+
+.header {
+  margin: 5px 5px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.header_manage {
+  display: flex;
+  justify-content: space-between;
+  width: 200px;
+}
+
+.item-container {
+  margin: 5px 5px;
+  display: flex;
+  justify-content: space-between;
+}
+

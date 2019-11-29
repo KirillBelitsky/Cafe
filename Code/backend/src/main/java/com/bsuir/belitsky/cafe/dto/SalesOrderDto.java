@@ -21,4 +21,10 @@ public class SalesOrderDto {
 
     @NotNull
     private UserDto owner;
+
+    @NotNull
+    private double price;
+
+    @NotNull
+    private boolean submitted;
 }

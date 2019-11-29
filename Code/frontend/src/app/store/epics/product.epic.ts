@@ -5,7 +5,11 @@ import {AnyAction} from 'redux';
 import {catchError, map, switchMap} from 'rxjs/operators';
 import {of} from 'rxjs';
 import {TransformService} from '../../services/utils/transform.service';
-import {FETCH_PRODUCTS, fetchProductsActionFailed, fetchProductsActionSuccess} from '../actions/product.actions';
+import {
+  FETCH_PRODUCTS,
+  fetchProductsActionFailed,
+  fetchProductsActionSuccess
+} from '../actions/product.actions';
 
 @Injectable()
 export class ProductEpic {
@@ -23,6 +27,5 @@ export class ProductEpic {
           );
       })
     );
-  }
-
+  };
 }

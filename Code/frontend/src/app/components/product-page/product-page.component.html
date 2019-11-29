@@ -14,7 +14,7 @@
         <div class="info-price">
           <p>Цена: {{this.product?.price}} BYN</p>
         </div>
-        <button mat-stroked-button color="primary">Заказать</button>
+        <button mat-stroked-button color="primary" (click)="onOrderClick()">Заказать</button>
       </div>
     </div>
     <div class="descr">

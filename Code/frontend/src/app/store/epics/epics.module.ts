@@ -4,6 +4,7 @@ import {UserEpic} from './user.epic';
 import {CurrentUserEpic} from './current-user.epic';
 import {CurrentProductEpic} from './current-product.epic';
 import {CommentEpic} from './comment.epic';
+import {CurrentSalesOrderEpic} from './current-sales-order.epic';
 
 @NgModule({
   providers: [
@@ -11,6 +12,7 @@ import {CommentEpic} from './comment.epic';
     UserEpic,
     CurrentUserEpic,
     CurrentProductEpic,
+    CurrentSalesOrderEpic,
     CommentEpic
   ]
 })

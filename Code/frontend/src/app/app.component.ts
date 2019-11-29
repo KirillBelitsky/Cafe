@@ -4,6 +4,7 @@ import {AppState} from './store';
 import {AutoUnsibscribeService} from './services/auto-unsibscribe.service';
 import {GlobalUserStorageService} from './services/global-storage.service';
 import {logoutUserAction} from './store/actions/current-user.actions';
+import {selectCurrentSalesOrderAction} from './store/actions/current-sales-order.action';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,8 @@ export class AppComponent extends AutoUnsibscribeService implements OnInit, OnDe
         this.ngRedux.dispatch(logoutUserAction());
       }
     });
+
+    this.ngRedux.dispatch(selectCurrentSalesOrderAction());
   }
 
   ngOnDestroy(): void {

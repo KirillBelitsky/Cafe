@@ -5,6 +5,7 @@ import {Injectable} from '@angular/core';
 import {CurrentUserEpic} from './current-user.epic';
 import {CurrentProductEpic} from './current-product.epic';
 import {CommentEpic} from './comment.epic';
+import {CurrentSalesOrderEpic} from './current-sales-order.epic';
 
 @Injectable()
 export class EpicService {
@@ -12,7 +13,8 @@ export class EpicService {
               private userEpic: UserEpic,
               private currentUserEpic: CurrentUserEpic,
               private currentProductEpic: CurrentProductEpic,
-              private commentEpic: CommentEpic) {}
+              private commentEpic: CommentEpic,
+              private currentSalesOrderEpic: CurrentSalesOrderEpic) {}
 
   getEpics() {
     return combineEpics(
@@ -24,6 +26,8 @@ export class EpicService {
       this.currentProductEpic.getProductById$,
       this.commentEpic.fetchComments$,
       this.commentEpic.saveComment$,
+      this.currentSalesOrderEpic.selectCurrentSalesOrder$,
+      this.currentSalesOrderEpic.addProductToSalesOrder$
     );
   }
 }

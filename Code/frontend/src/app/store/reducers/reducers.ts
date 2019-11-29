@@ -5,6 +5,7 @@ import {userPageReducer} from './user-state.reducer';
 import {currentUserReducer} from './current-user.reducer';
 import {currentProductReducer} from './current-product.reducer';
 import {commentReducer} from './comment.reducer';
+import {currentSalesOrder} from './current-sales-order.reducer';
 
 export const reducers: Reducer = combineReducers({
   productState: productReducer,
@@ -13,4 +14,5 @@ export const reducers: Reducer = combineReducers({
   currentUser: currentUserReducer,
   currentProduct: currentProductReducer,
   commentState: commentReducer,
+  currentSalesOrder: currentSalesOrder
 });

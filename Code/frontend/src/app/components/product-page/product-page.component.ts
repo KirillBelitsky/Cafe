@@ -12,8 +12,7 @@ import {
   currentProductIsLoading,
   selectCurrentProduct
 } from '../../store/selectors/current-product.selector';
-import {selectIsLoading} from '../../store/selectors/product.selector';
-import {selectCurrentUser, selectLoginOfCurrentUser} from '../../store/selectors/current-user.selector';
+import {addProductToSalesOrder} from '../../store/actions/current-sales-order.action';
 
 @Component({
   selector: 'app-product-page',
@@ -24,8 +23,6 @@ export class ProductPageComponent extends AutoUnsibscribeService implements OnIn
 
   @select(currentProductIsLoading)
   private currentProductIsLoading: Observable<boolean>;
-  @select(selectIsLoading)
-  private isLoading: Observable<boolean>;
   private id: string;
   private product: Product;
 
@@ -55,7 +52,11 @@ export class ProductPageComponent extends AutoUnsibscribeService implements OnIn
     });
   }
 
-  public getImage(): string {
+  private onOrderClick(): void {
+    this.ngRedux.dispatch(addProductToSalesOrder(this.product.id));
+  }
+
+  private getImage(): string {
     return this.productImageService.getImageSrc(this.id);
   }
 
