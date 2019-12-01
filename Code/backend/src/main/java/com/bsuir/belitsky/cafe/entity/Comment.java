@@ -20,6 +20,7 @@ public class Comment {
             strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
     private String comment;
+    private String date;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userid", referencedColumnName = "id")

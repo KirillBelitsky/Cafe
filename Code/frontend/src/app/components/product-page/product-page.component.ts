@@ -4,7 +4,7 @@ import {AutoUnsibscribeService} from '../../services/auto-unsibscribe.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {ProductService} from '../../services/product.service';
 import {Observable} from 'rxjs';
-import {ProductImageService} from '../../utils/product-image-service';
+import {ProductImageService} from '../../services/utils/product-image-service';
 import {NgRedux, select} from '@angular-redux/store';
 import {AppState} from '../../store';
 import {selectProductAction} from '../../store/actions/current-product.actions';

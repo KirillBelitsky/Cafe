@@ -24,6 +24,9 @@ public class CommentDto {
     @NotNull
     private ProductDto product;
 
+    @Null
+    private String date;
+
     @Override
     public String toString() {
         return "CommentDto{" +

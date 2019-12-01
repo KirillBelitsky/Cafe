@@ -11,12 +11,18 @@
         </div>
       </div>
     </div>
-    <div class="info">
-      <div class="item-container">
-         <div class="item-info">dfgds</div>
-         <div class="item-price">dsfgdsfg</div>
-         <div class="item_activ">fdgdsg</div>
-      </div>
+    <div class="info" *ngIf="this.salesOrder!=null && this.salesOrder.products.length!= 0; else emptyBlock">
+
+        <div *ngFor="let item of this.salesOrder.productsQuantity.entries()" class="item-container">
+           <div class="item-info">{{getProductName(item)}}</div>
+           <div class="item-price">dsfgdsfg</div>
+           <div class="item_activ">fdgdsg</div>
+        </div>
+
     </div>
+
+    <ng-template #emptyBlock>
+      <div class="emptyBlock">Cart is empty!</div>
+    </ng-template>
   </div>
 </div>

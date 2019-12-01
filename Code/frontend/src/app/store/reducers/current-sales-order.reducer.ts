@@ -5,11 +5,22 @@ import {
   SELECT_SALES_ORDER_SUCCESS,
   UPDATE_SALES_ORDER
 } from '../actions/current-sales-order.action';
+import {Product} from '../../models/product.model';
 
-export const currentSalesOrderReducer: Reducer<SalesOrder> =(state: SalesOrder = null, action) => {
+export interface CurrentSalesOrderState {
+  readonly salesOrder: SalesOrder,
+  readonly isLoading: boolean
+}
+
+const INITIAL_STATE = {
+  salesOrder: null,
+  isLoading: false
+};
+
+export const currentSalesOrderReducer: Reducer<CurrentSalesOrderState> =(state: CurrentSalesOrderState = INITIAL_STATE, action) => {
   switch (action.type) {
     case SELECT_SALES_ORDER: {
-      return { ...state };
+      return { ...state, isLoading:true };
     }
     case SELECT_SALES_ORDER_SUCCESS:
     case UPDATE_SALES_ORDER:  {
@@ -22,10 +33,10 @@ export const currentSalesOrderReducer: Reducer<SalesOrder> =(state: SalesOrder =
         else
           salesOrder.productsQuantity.set(value.id, 1);
       });
-      return salesOrder;
+      return { ...state, salesOrder: salesOrder, isLoading: false };
     }
     default: {
-      return state;
+      return { ...state };
     }
   }
 };

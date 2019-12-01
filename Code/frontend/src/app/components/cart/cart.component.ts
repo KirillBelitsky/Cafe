@@ -2,9 +2,10 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AutoUnsibscribeService} from '../../services/auto-unsibscribe.service';
 import {NgRedux, select} from '@angular-redux/store';
 import {AppState} from '../../store';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder} from '@angular/forms';
 import {SalesOrder} from '../../models/sales-order.model';
-import {currentSalesOrder} from '../../store/selectors/current-sales-order.selector';
+import {currentSalesOrder, currentSalesOrderIsLoading} from '../../store/selectors/current-sales-order.selector';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-cart',
@@ -13,6 +14,8 @@ import {currentSalesOrder} from '../../store/selectors/current-sales-order.selec
 })
 export class CartComponent extends AutoUnsibscribeService implements OnInit, OnDestroy {
 
+  @select(currentSalesOrderIsLoading)
+  private isLoading: Observable<boolean>;
   private salesOrder: SalesOrder;
 
   constructor(private fb: FormBuilder,
@@ -29,6 +32,14 @@ export class CartComponent extends AutoUnsibscribeService implements OnInit, OnD
   }
 
   private getSalesOrder(): void {
-    this.salesOrder = currentSalesOrder(this.ngRedux.getState());
+    this.isLoading.subscribe(value => {
+      if(!value) {
+        this.salesOrder = currentSalesOrder(this.ngRedux.getState());
+      }
+    });
+  }
+
+  getProductName(id: string) {
+    return 'sfaf';
   }
 }

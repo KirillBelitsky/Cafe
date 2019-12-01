@@ -6,4 +6,5 @@ export interface Comment {
   readonly comment: string;
   readonly owner: User;
   readonly product: Product;
+  readonly date: string;
 }

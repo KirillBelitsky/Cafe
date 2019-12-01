@@ -29,7 +29,7 @@ export class CommentsComponent extends AutoUnsibscribeService implements OnInit,
   private commentForm: FormGroup;
   private comments: Comment[];
   private isComments = false;
-  private displayedColumns: string[] = ['User', 'Text'];
+  private displayedColumns: string[] = ['User', 'Text', 'Date'];
 
   constructor(private fb: FormBuilder,
               private ngRedux: NgRedux<AppState>) {
@@ -61,7 +61,8 @@ export class CommentsComponent extends AutoUnsibscribeService implements OnInit,
       id: null,
       comment: this.commentForm.controls['commentText'].value,
       owner: selectCurrentUser(this.ngRedux.getState()),
-      product: selectCurrentProduct(this.ngRedux.getState())
+      product: selectCurrentProduct(this.ngRedux.getState()),
+      date: null
     };
     console.log(saveComment);
     this.ngRedux.dispatch(saveCommentAction(saveComment));

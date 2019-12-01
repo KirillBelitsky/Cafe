@@ -12,7 +12,7 @@ import {RoleService} from './services/role.service';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {ProductPageComponent} from './components/product-page/product-page.component';
 import {ProductService} from './services/product.service';
-import {ProductImageService} from './utils/product-image-service';
+import {ProductImageService} from './services/utils/product-image-service';
 import {DevToolsExtension, NgRedux, NgReduxModule} from '@angular-redux/store';
 import {AppState} from './store';
 import {NgReduxRouter, NgReduxRouterModule} from '@angular-redux/router';
