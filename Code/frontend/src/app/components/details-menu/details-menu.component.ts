@@ -10,6 +10,9 @@ import {fetchProductsAction} from '../../store/actions/product.actions';
 import {Product} from '../../models/product.model';
 import {selectProducts, selectProductsIsLoading} from '../../store/selectors/product.selector';
 import {Observable} from 'rxjs';
+import {selectCurrentMenuCategory} from '../../store/actions/current-menu-category.action';
+import {currentMenuCategory, currentMenuCategoryIsLoading} from '../../store/selectors/current-menu-category.selector';
+import {MenuCategory} from '../../models/menu-category.model';
 
 @Component({
   selector: 'app-details-menu',
@@ -19,9 +22,12 @@ import {Observable} from 'rxjs';
 export class DetailsMenuComponent extends AutoUnsibscribeService implements OnInit, OnDestroy {
 
   @select(selectProductsIsLoading)
-  private isLoading: Observable<boolean>
-  private categoryId: string;
+  private isLoading: Observable<boolean>;
+  @select(currentMenuCategoryIsLoading)
+  private categoryIsLoading: Observable<boolean>;
+  private code: string;
   private products: Product[];
+  private menuCategory: MenuCategory;
 
   constructor(private route: ActivatedRoute,
               private ngRedux: NgRedux<AppState>) {
@@ -37,13 +43,16 @@ export class DetailsMenuComponent extends AutoUnsibscribeService implements OnIn
   }
 
   private getProducts(): void {
-    this.categoryId = this.route.snapshot.paramMap.get('id');
-    this.ngRedux.dispatch(fetchProductsAction(this.categoryId));
+    this.code = this.route.snapshot.paramMap.get('code');
+    this.ngRedux.dispatch(selectCurrentMenuCategory(this.code));
+    this.ngRedux.dispatch(fetchProductsAction(this.code));
     this.isLoading.subscribe(result => {
       if(!result) {
         this.products = selectProducts(this.ngRedux.getState());
       }
+    });
+    this.categoryIsLoading.subscribe(result => {
+      this.menuCategory = currentMenuCategory(this.ngRedux.getState());
     })
-
   }
 }

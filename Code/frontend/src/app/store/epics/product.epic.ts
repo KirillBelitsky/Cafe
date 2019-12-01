@@ -20,7 +20,7 @@ export class ProductEpic {
   fetchProducts$ = (action$: ActionsObservable<AnyAction>) => {
     return action$.ofType(FETCH_PRODUCTS).pipe(
       switchMap(({payload}) => {
-        return this.productService.getAllProductByMenuCategory(payload.categoryId)
+        return this.productService.getAllProductByMenuCategory(payload.code)
           .pipe(
             map(products => fetchProductsActionSuccess(TransformService.transformToMap(products))),
             catchError(error => of(fetchProductsActionFailed(error.message)))

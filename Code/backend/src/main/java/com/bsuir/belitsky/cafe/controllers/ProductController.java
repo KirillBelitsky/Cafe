@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/products/")
+@RequestMapping("/api/products")
 public class ProductController {
 
     private ModelMapper modelMapper;
@@ -34,9 +34,9 @@ public class ProductController {
         else return null;
     }
 
-    @GetMapping("/category/{id}")
-    public List<ProductDto> getAllProductByMenuCategory(@PathVariable(name = "id") String id) {
-        return productService.getAllProductByMenuCategory(id)
+    @GetMapping("/category")
+    public List<ProductDto> getAllProductByMenuCategory(@RequestParam(name = "code") String code) {
+        return productService.getAllProductByMenuCategoryCode(code)
                 .stream()
                 .map(value -> this.modelMapper.map(value, ProductDto.class))
                 .collect(Collectors.toList());

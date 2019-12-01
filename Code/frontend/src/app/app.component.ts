@@ -25,7 +25,9 @@ export class AppComponent extends AutoUnsibscribeService implements OnInit, OnDe
       }
     });
 
-    this.ngRedux.dispatch(selectCurrentSalesOrderAction());
+    if(this.localStorage.currentUser && this.localStorage.currentToken) {
+      this.ngRedux.dispatch(selectCurrentSalesOrderAction());
+    }
   }
 
   ngOnDestroy(): void {

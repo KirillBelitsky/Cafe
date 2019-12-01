@@ -11,8 +11,8 @@ const routes: Routes = [
   { path: '', redirectTo: 'menu', pathMatch: 'full' },
   { path: 'menu', component: MenuComponent },
   { path: 'products/:id', component: ProductPageComponent, canActivate: [AuthGuardService] },
-  { path: 'menu/category/:id', component: DetailsMenuComponent },
-  { path: 'cart', component: CartComponent }
+  { path: 'menu/category/:code', component: DetailsMenuComponent },
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuardService] }
 ];
 
 @NgModule({

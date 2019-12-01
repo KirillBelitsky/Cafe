@@ -4,10 +4,10 @@ export const FETCH_PRODUCTS = '[Products] Fetch products';
 export const FETCH_PRODUCTS_SUCCESS = '[Products] Fetch products success';
 export const FETCH_PRODUCTS_FAILED = '[Products] Fetch products failed';
 
-export function fetchProductsAction(categoryId: string) {
+export function fetchProductsAction(code: string) {
   return {
     type: FETCH_PRODUCTS,
-    payload: {categoryId}
+    payload: {code}
   };
 }
 

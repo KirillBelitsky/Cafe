@@ -32,7 +32,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public List<Product> getAllProductByMenuCategory(String categoryId) {
-        return productRepository.getProductsByMenuCategoryId(categoryId);
+    public List<Product> getAllProductByMenuCategoryCode(String code) {
+        return productRepository.findAllByMenuCategoryCode(code);
     }
 }

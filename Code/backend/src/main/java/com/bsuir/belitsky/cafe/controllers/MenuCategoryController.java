@@ -5,10 +5,7 @@ import com.bsuir.belitsky.cafe.entity.MenuCategory;
 import com.bsuir.belitsky.cafe.services.MenuCategoryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/menu_category")
@@ -31,5 +28,11 @@ public class MenuCategoryController {
             return menuCategory != null ? modelMapper.map(menuCategory, MenuCategoryDto.class) : null;
         }
         return null;
+    }
+
+    @GetMapping("/code/{code}")
+    public MenuCategoryDto getMenuCategoryByCode(@PathVariable(name = "code") String code) {
+        MenuCategory menuCategory = menuCategoryService.getMenuCategoryByCode(code);
+        return menuCategory != null ? modelMapper.map(menuCategory, MenuCategoryDto.class) : null;
     }
 }

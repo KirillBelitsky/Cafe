@@ -9,13 +9,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "menu_category", schema = "public")
 @NoArgsConstructor
 @Setter
 @Getter
-public class MenuCategory {
+public class MenuCategory implements Serializable {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -23,4 +24,7 @@ public class MenuCategory {
             strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
     private String name;
+    private String description;
+    private String code;
 }
+

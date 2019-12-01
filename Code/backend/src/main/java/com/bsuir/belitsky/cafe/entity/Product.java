@@ -27,7 +27,7 @@ public class Product {
     private String description;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "menu_category_id", referencedColumnName = "id")
+    @JoinColumn(name = "menu_category_code", referencedColumnName = "code")
     private MenuCategory menuCategory;
 
     @Override
@@ -38,6 +38,7 @@ public class Product {
                 ", price=" + price +
                 ", mass=" + mass +
                 ", description='" + description + '\'' +
+                ", menuCategory=" + menuCategory +
                 '}';
     }
 }

@@ -1,32 +1,55 @@
 <div class="menu-container">
+  <div class="menu-info">
+    <div class="menu-info-header">
+      {{menuCategory?.name}}
+    </div>
+    <div class="menu-info-descr">
+      {{menuCategory?.description}}
+    </div>
+  </div>
   <div class="container">
     <div class="row">
       <div class="item-left">
         <img src="/assets/images/menuBreakfast.jpg">
-        <div class="item-description">
-          <h1>Cеты</h1>
+        <div class="item-descr">
+          <div class="item-descr-name">sdfgsdfgdsfgsdfgsdfgs</div>
+          <div class="item-descr-info-div">
+            <div class="item-descr-info-price"><p>Price: 3.20 BYN</p></div>
+            <button mat-stroked-button color="primary" (click)="onAddClick()">Заказать</button>
+          </div>
         </div>
       </div>
       <div class="item-right">
-      <img src="/assets/images/menuBreakfast.jpg">
-              <div class="item-description">
-                <h1>Cеты</h1>
+        <img src="/assets/images/menuBreakfast.jpg">
+          <div class="item-descr">
+            <div class="item-descr-name">sdfgsdfgdsfgsdfgsdfgs</div>
+              <div class="item-descr-info-div">
+                <div class="item-descr-info-price"><p>Price: 3.20 BYN</p></div>
+                  <button mat-stroked-button color="primary" (click)="onAddClick()">Заказать</button>
+                </div>
               </div>
       </div>
     </div>
     <div class="row">
       <div class="item-left">
-      <img src="/assets/images/menuHotDishes.jpg">
-              <div class="item-description">
-                <h1>Cеты</h1>
+              <img src="/assets/images/menuBreakfast.jpg">
+              <div class="item-descr">
+                <div class="item-descr-name">sdfgsdfgdsfgsdfgsdfgs</div>
+                <div class="item-descr-info-div">
+                  <div class="item-descr-info-price"><p>Price: 3.20 BYN</p></div>
+                  <button mat-stroked-button color="primary" (click)="onAddClick()">Заказать</button>
+                </div>
               </div>
-      </div>
-      <div class="item-right">
-      <img src="/assets/images/menuSalats.jpg">
-              <div class="item-description">
-                <h1>Cеты</h1>
-              </div>
-      </div>
-    </div>
+            </div>
+            <div class="item-right">
+              <img src="/assets/images/menuBreakfast.jpg">
+                <div class="item-descr">
+                  <div class="item-descr-name">sdfgsdfgdsfgsdfgsdfgs</div>
+                    <div class="item-descr-info-div">
+                      <div class="item-descr-info-price"><p>Price: 3.20 BYN</p></div>
+                        <button mat-stroked-button color="primary" (click)="onAddClick()">Заказать</button>
+                      </div>
+                    </div>
+            </div>
   </div>
 </div>

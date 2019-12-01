@@ -1,4 +1,3 @@
-import {AppState} from '../index';
 import {SalesOrder} from '../../models/sales-order.model';
 import {Reducer} from 'redux';
 import {
@@ -7,7 +6,7 @@ import {
   UPDATE_SALES_ORDER
 } from '../actions/current-sales-order.action';
 
-export const currentSalesOrder: Reducer<SalesOrder> =(state: SalesOrder = null, action) => {
+export const currentSalesOrderReducer: Reducer<SalesOrder> =(state: SalesOrder = null, action) => {
   switch (action.type) {
     case SELECT_SALES_ORDER: {
       return { ...state };

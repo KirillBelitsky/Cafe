@@ -20,4 +20,9 @@ public class MenuCategoryServiceImpl implements MenuCategoryService {
     public MenuCategory saveMenuCategory(MenuCategory menuCategory) {
         return menuCategoryRepository.save(menuCategory);
     }
+
+    @Override
+    public MenuCategory getMenuCategoryByCode(String code) {
+        return menuCategoryRepository.getMenuCategoryByCode(code);
+    }
 }

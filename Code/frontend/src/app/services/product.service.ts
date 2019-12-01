@@ -22,7 +22,7 @@ export class ProductService {
   }
 
   public getAllProductByMenuCategory(category: string): Observable<Product[]> {
-    return this.httpClient.get<Product[]>(`${this.PRODUCT_URL}/category/${category}`)
+    return this.httpClient.get<Product[]>(`${this.PRODUCT_URL}/category?code=${category}`)
       .pipe(catchError((error: any) => throwError(error.error)));
   }
 }

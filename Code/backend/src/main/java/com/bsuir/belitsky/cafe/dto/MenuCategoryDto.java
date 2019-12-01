@@ -17,4 +17,10 @@ public class MenuCategoryDto {
 
     @NotNull
     private String name;
+
+    @NotNull
+    private String description;
+
+    @Null
+    private String code;
 }
