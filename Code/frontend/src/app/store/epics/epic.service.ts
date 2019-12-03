@@ -25,8 +25,11 @@ export class EpicService {
       this.currentProductEpic.getProductById$,
       this.commentEpic.fetchComments$,
       this.commentEpic.saveComment$,
+      this.commentEpic.removeComment$,
       this.currentSalesOrderEpic.selectCurrentSalesOrder$,
       this.currentSalesOrderEpic.addProductToSalesOrder$,
+      this.currentSalesOrderEpic.removeProductInSalesOrder$,
+      this.currentSalesOrderEpic.submitCurrentSalesOrder$,
       this.currentMenuCategoryEpic.selectCurrentMenuCategory$
     );
   }

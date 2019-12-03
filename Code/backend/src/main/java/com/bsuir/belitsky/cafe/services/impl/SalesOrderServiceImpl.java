@@ -51,6 +51,22 @@ public class SalesOrderServiceImpl implements SalesOrderService {
     }
 
     @Override
+    public SalesOrder submitSalesOrder(SalesOrder salesOrder) {
+        String login = ((UserDetails)SecurityContextHolder.getContext()
+                .getAuthentication().getPrincipal()).getUsername();
+
+        salesOrder.setSubmitted(true);
+        salesOrderRepository.save(salesOrder);
+
+        SalesOrder so = new SalesOrder();
+        so.setSubmitted(false);
+        User owner = userService.getUserByLogin(login);
+        so.setOwner(owner);
+
+        return salesOrderRepository.save(so);
+    }
+
+    @Override
     public SalesOrder addProductToSalesOrder(String productId) {
         if(productId != null) {
             Product product = productService.getProductById(productId);
@@ -60,10 +76,23 @@ public class SalesOrderServiceImpl implements SalesOrderService {
                 salesOrder.getProducts().add(product);
                 return salesOrderRepository.save(salesOrder);
             }
-
             return null;
         }
+        return null;
+    }
 
+    @Override
+    public SalesOrder removeProductInSalesOrder(String productId) {
+        if(productId != null) {
+            Product product = productService.getProductById(productId);
+            if(product != null) {
+                SalesOrder salesOrder = getCurrentSalesOrder();
+                salesOrder.getProducts().remove(product);
+                salesOrder.setPrice(salesOrder.getPrice() - product.getPrice());
+                return salesOrderRepository.save(salesOrder);
+            }
+            return null;
+        }
         return null;
     }
 }

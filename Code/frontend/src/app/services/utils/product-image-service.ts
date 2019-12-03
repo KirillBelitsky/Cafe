@@ -4,7 +4,7 @@ import {Injectable} from '@angular/core';
 export class ProductImageService {
 
   private map: Map<string, string> = new Map([
-    ['80fce9bf-1d25-42bb-ac80-40f430e726b5', '/assets/images/blinWithTvorog.jpg'],
+    ['80fce9bf-1d25-42bb-ac80-40f430e726b5', '/assets/images/blinTvorog.jpg'],
     ['6244e02a-72e3-440f-8cd1-e322a3c9b96b', '/assets/images/blinWithSirAndVetchina.jpg'],
     ['c575278d-9871-4a60-a54c-2a3667c01079', '/assets/images/blinWithTvorog.jpg'],
     ['4c6ddde9-4c19-4f85-b06c-f1094fec689a', '/assets/images/omletWithVetchina.jpg'],
@@ -18,6 +18,11 @@ export class ProductImageService {
     ['b13e030e-291b-4f98-93cb-a69aa3caf76f', '/assets/images/tomKha.jpg'],
     ['5c1af908-d986-4564-aef0-40e4c844a2ed', '/assets/images/bulonWithChesnHleb.jpg'],
     ['a2fe88d5-91f9-4782-a9f6-b685a843876b', '/assets/images/solyanka.jpg'],
+    ['f8a0a60e-c2a3-4701-9095-f06779f06858', '/assets/images/PizzaKarbonara.jpg'],
+    ['5d2821ce-196f-4d5b-968d-42b7c15a9caa', '/assets/images/PizzaPeperoni.jpg'],
+    ['13f4e035-c455-466e-985d-476b9755d85d', '/assets/images/PizzaBarbeku.jpg'],
+    ['270885b8-2d46-4390-9093-d8b88de43d19', '/assets/images/pizza5Cheese.jpg'],
+    ['f0d33406-dcb9-44eb-8a3a-3472ccf0f484', '/assets/images/kotletaWithPure.jpg'],
   ]);
 
   public getImageSrc(id: string): string {

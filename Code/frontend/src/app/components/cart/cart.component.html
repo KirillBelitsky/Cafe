@@ -1,22 +1,37 @@
 <div class="container">
   <div class="page">
     <div class="header">
-      <div class="header_name"><h2>Cart</h2></div>
+      <div class="header_name"><h1>Cart</h1></div>
       <div class="header_manage">
         <div class="header_total">
-          <h3>Total: {{salesOrder?.price}}</h3>
+          <h2>Total: {{salesOrder?.price}} BYN</h2>
         </div>
         <div class="header_submit">
-          <button mat-stroked-button color="primary">Submit</button>
+          <button mat-stroked-button [disabled]="this.salesOrder==null || this.salesOrder.products.length==0" color="primary" (click)="onSubmitClick()">Submit</button>
         </div>
       </div>
     </div>
     <div class="info" *ngIf="this.salesOrder!=null && this.salesOrder.products.length!= 0; else emptyBlock">
 
-        <div *ngFor="let item of this.salesOrder.productsQuantity.entries()" class="item-container">
-           <div class="item-info">{{getProductName(item)}}</div>
-           <div class="item-price">dsfgdsfg</div>
-           <div class="item_activ">fdgdsg</div>
+        <div *ngFor="let item of productsId" class="item-container">
+           <div class="item-info">
+            <div class="item-info-name">
+              {{this.getProductName(item)}}
+            </div>
+            <div class="item-info-descr">
+              {{this.getProductDescription(item)}}
+            </div>
+           </div>
+           <div class="item-price">{{getProductPrice(item, this.salesOrder.productsQuantity.get(item))}} BYN</div>
+           <div class="item_activ">
+           <button mat-icon-button color="primary" (click)="onAddClick(item)">
+             <mat-icon>add_circle_outline</mat-icon>
+            </button>
+             <div class="item_activ_count">{{getProductCount(item)}}</div>
+            <button mat-icon-button color="primary" (click)="onRemoveClick(item)">
+              <mat-icon>remove_circle_outline</mat-icon>
+            </button>
+           </div>
         </div>
 
     </div>

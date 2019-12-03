@@ -35,6 +35,9 @@ import {CommentService} from './services/comment.service';
 import {CartComponent} from './components/cart/cart.component';
 import {SalesOrderService} from './services/sales-order.service';
 import {MenuCategoryService} from './services/menu-category.service';
+import {MatConfirmDialogComponent} from './components/dialogs/mat-confirmation-dialog/mat-confirm-dialog.component';
+import {MatConfirmDialogService} from './components/dialogs/mat-confirmation-dialog/mat-confirm-dialog.service';
+import {MatDialogModule} from '@angular/material/dialog';
 
 const JWT_Module_Options: JwtModuleOptions = {
   config: {
@@ -52,6 +55,7 @@ const JWT_Module_Options: JwtModuleOptions = {
     DetailsMenuComponent,
     CommentsComponent,
     CartComponent,
+    MatConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -65,6 +69,7 @@ const JWT_Module_Options: JwtModuleOptions = {
     NgReduxModule,
     NgReduxRouterModule.forRoot(),
     DialogsModule,
+    MatDialogModule,
     JwtModule.forRoot(JWT_Module_Options),
   ],
   providers: [
@@ -80,8 +85,10 @@ const JWT_Module_Options: JwtModuleOptions = {
     CommentService,
     SalesOrderService,
     MenuCategoryService,
+    MatConfirmDialogService,
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [MatConfirmDialogComponent]
 })
 export class AppModule {
 

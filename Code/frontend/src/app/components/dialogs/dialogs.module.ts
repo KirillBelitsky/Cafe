@@ -10,6 +10,7 @@ import { LoginUserComponent } from './login-user/login-user.component';
 import {RouterModule} from '@angular/router';
 import {MaterialModule} from '../../material.module';
 import { RegisterUserComponent } from './register-user/register-user.component';
+import {InformationPopupComponent} from './information-popup/information-popup.component';
 
 @NgModule({
   imports: [
@@ -22,7 +23,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
     MatDialogModule,
     MaterialModule
   ],
-  declarations: [LoginUserComponent, RegisterUserComponent],
-  entryComponents: [LoginUserComponent, RegisterUserComponent]
+  declarations: [LoginUserComponent, RegisterUserComponent, InformationPopupComponent],
+  entryComponents: [LoginUserComponent, RegisterUserComponent, InformationPopupComponent]
 })
 export class DialogsModule { }

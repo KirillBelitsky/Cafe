@@ -21,4 +21,9 @@ export class CommentService {
     return this.httpClient.post<Comment>(`${this.COMMENT_URL}`, comment)
       .pipe(catchError((error: any) => throwError(error.error)));
   }
+
+  public removeComment(id: string): Observable<Object> {
+    return this.httpClient.delete(`${this.COMMENT_URL}/delete/${id}`)
+      .pipe(catchError((error: any) => throwError(error.error)));
+  }
 }

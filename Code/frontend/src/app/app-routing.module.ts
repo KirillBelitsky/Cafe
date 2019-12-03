@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'menu', pathMatch: 'full' },
   { path: 'menu', component: MenuComponent },
   { path: 'products/:id', component: ProductPageComponent, canActivate: [AuthGuardService] },
-  { path: 'menu/category/:code', component: DetailsMenuComponent },
+  { path: 'menu/category/:code', component: DetailsMenuComponent, canActivate: [AuthGuardService] },
   { path: 'cart', component: CartComponent, canActivate: [AuthGuardService] }
 ];
 

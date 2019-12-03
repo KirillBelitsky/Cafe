@@ -54,6 +54,7 @@ export class CurrentUserEpic {
               of(registerUserActionSuccess());
               this.localStorage.currentUser = userToken.user;
               this.localStorage.currentToken = userToken.token;
+              this.ngRedux.dispatch(selectCurrentSalesOrderAction());
               return updateCurrentUserAction(userToken.user);
             })
           );

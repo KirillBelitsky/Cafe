@@ -16,11 +16,12 @@
 .header_manage {
   display: flex;
   justify-content: space-between;
-  width: 200px;
+  width: 300px;
+  align-items: center;
 }
 
 .item-container {
-  margin: 5px 5px;
+  margin: 30px 50px;
   display: flex;
   justify-content: space-between;
 }
@@ -29,4 +30,40 @@
   text-align: center;
   font-size: 50px;
   margin-top: 250px;
+}
+
+.item-info {
+  width: 450px;
+}
+
+.item-info-name {
+  font-size: 28px;
+}
+
+.item-info-descr {
+  font-size: 15px;
+}
+
+.item-price {
+  width: 450px;
+  font-size: 20px;
+  text-align: center;
+}
+
+.item_activ {
+  width: 450px;
+  display: flex;
+  justify-content: center;
+}
+
+.item_activ_count {
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+::ng-deep .mat-icon{
+  height:40px !important;
+  width:40px !important;
+  font-size:40px !important;
 }

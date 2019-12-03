@@ -3,7 +3,7 @@ import {Comment} from '../../models/comment.model';
 import {
   FETCH_COMMENTS,
   FETCH_COMMENTS_FAILED,
-  FETCH_COMMENTS_SUCCESS,
+  FETCH_COMMENTS_SUCCESS, REMOVE_COMMENT, REMOVE_COMMENT_SUCCESS,
   SAVE_COMMENT,
   SAVE_COMMENT_FAILED, SAVE_COMMENT_SUCCESS, UPDATE_COMMENTS_ADD
 } from '../actions/comment.actions';
@@ -20,8 +20,12 @@ const INITIAL_STATE = {
 
 export const commentReducer: Reducer<CommentState> = (state: CommentState = INITIAL_STATE, action) => {
   switch (action.type) {
-    case FETCH_COMMENTS:
-    case SAVE_COMMENT: {
+    case FETCH_COMMENTS: {
+      state.comments.clear();
+      return { ...state, isLoading: true }
+    }
+    case SAVE_COMMENT:
+    case REMOVE_COMMENT: {
       return { ...state, isLoading: true };
     }
     case FETCH_COMMENTS_SUCCESS: {
@@ -34,6 +38,10 @@ export const commentReducer: Reducer<CommentState> = (state: CommentState = INIT
     }
     case UPDATE_COMMENTS_ADD: {
       state.comments.set(action.payload.comment.id, action.payload.comment);
+      return { ...state, isLoading: false }
+    }
+    case REMOVE_COMMENT_SUCCESS: {
+      state.comments.delete(action.payload.id);
       return { ...state, isLoading: false }
     }
     case FETCH_COMMENTS_FAILED:

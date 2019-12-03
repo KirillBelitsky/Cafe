@@ -30,9 +30,25 @@ public class SalesOrderController {
         return null;
     }
 
+    @PostMapping("/submit")
+    public SalesOrderDto submitSalesOrder(@RequestBody SalesOrderDto salesOrderDto) {
+        if(salesOrderDto != null) {
+            SalesOrder salesOrder = salesOrderService.submitSalesOrder(
+                    modelMapper.map(salesOrderDto, SalesOrder.class));
+            return salesOrder != null ? modelMapper.map(salesOrder, SalesOrderDto.class) : null;
+        }
+        return null;
+    }
+
     @GetMapping("/addProduct/{id}")
     public SalesOrderDto addProductToSalesOrder(@PathVariable("id") String productId) {
         SalesOrder salesOrder = salesOrderService.addProductToSalesOrder(productId);
+        return salesOrder != null ? modelMapper.map(salesOrder, SalesOrderDto.class) : null;
+    }
+
+    @GetMapping("/removeProduct/{id}")
+    public SalesOrderDto removeProductInSalesOrder(@PathVariable("id") String productId) {
+        SalesOrder salesOrder = salesOrderService.removeProductInSalesOrder(productId);
         return salesOrder != null ? modelMapper.map(salesOrder, SalesOrderDto.class) : null;
     }
 

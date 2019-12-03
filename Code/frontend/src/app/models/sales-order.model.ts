@@ -6,6 +6,6 @@ export interface SalesOrder {
   productsQuantity: Map<string, number>;
   readonly products: Product[];
   readonly owner: User;
-  readonly price: number;
+  price: number;
   readonly submitted: boolean;
 }

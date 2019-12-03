@@ -13,6 +13,8 @@ import {Observable} from 'rxjs';
 import {selectCurrentMenuCategory} from '../../store/actions/current-menu-category.action';
 import {currentMenuCategory, currentMenuCategoryIsLoading} from '../../store/selectors/current-menu-category.selector';
 import {MenuCategory} from '../../models/menu-category.model';
+import {ProductImageService} from '../../services/utils/product-image-service';
+import {addProductToSalesOrder} from '../../store/actions/current-sales-order.action';
 
 @Component({
   selector: 'app-details-menu',
@@ -30,7 +32,9 @@ export class DetailsMenuComponent extends AutoUnsibscribeService implements OnIn
   private menuCategory: MenuCategory;
 
   constructor(private route: ActivatedRoute,
-              private ngRedux: NgRedux<AppState>) {
+              private router: Router,
+              private ngRedux: NgRedux<AppState>,
+              private productImageService: ProductImageService) {
     super();
   }
 
@@ -54,5 +58,17 @@ export class DetailsMenuComponent extends AutoUnsibscribeService implements OnIn
     this.categoryIsLoading.subscribe(result => {
       this.menuCategory = currentMenuCategory(this.ngRedux.getState());
     })
+  }
+
+  private onAddClick(productId: string): void {
+    this.ngRedux.dispatch(addProductToSalesOrder(productId));
+  }
+
+  private onProductClick(productId: string): void {
+    this.router.navigate([`/products/${productId}`])
+  }
+
+  private getImageSrc(id: string): string {
+    return this.productImageService.getImageSrc(id);
   }
 }

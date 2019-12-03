@@ -5,6 +5,7 @@ import com.bsuir.belitsky.cafe.entity.Comment;
 import com.bsuir.belitsky.cafe.services.CommentService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -55,5 +56,14 @@ public class CommentController {
                 .stream()
                 .map(comment -> modelMapper.map(comment, CommentDto.class))
                 .collect(Collectors.toList());
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity deleteCommentById(@PathVariable("id") String id) {
+        if(id != null) {
+            commentService.removeComment(id);
+            return ResponseEntity.noContent().build();
+        }
+        return null;
     }
 }

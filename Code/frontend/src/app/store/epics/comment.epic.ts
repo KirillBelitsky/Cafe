@@ -5,7 +5,7 @@ import {AnyAction} from 'redux';
 import {
   FETCH_COMMENTS,
   fetchCommentsActionFailed,
-  fetchCommentsActionSuccess,
+  fetchCommentsActionSuccess, REMOVE_COMMENT, removeCommentActionSuccess,
   SAVE_COMMENT, saveCommentActionFailed, saveCommentActionSuccess, updateCommentsActionAfterSave
 } from '../actions/comment.actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
@@ -45,6 +45,17 @@ export class CommentEpic {
             catchError((err) => {
               return of(saveCommentActionFailed(err.message));
             })
+          );
+      })
+    );
+  };
+
+  removeComment$ = (action$: ActionsObservable<AnyAction>) => {
+    return action$.ofType(REMOVE_COMMENT).pipe(
+      switchMap(({payload}) => {
+        return this.commentService.removeComment(payload.id)
+          .pipe(
+            map(result => removeCommentActionSuccess(payload.id))
           );
       })
     );

@@ -1,15 +1,13 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {AutoUnsibscribeService} from '../../services/auto-unsibscribe.service';
-import {ActivatedRoute, Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {NgRedux, select} from '@angular-redux/store';
 import {AppState} from '../../store';
 import {
-  currentProductIsLoading,
   selectCurrentProduct
 } from '../../store/selectors/current-product.selector';
 import {FormBuilder, FormGroup} from '@angular/forms';
-import {fetchCommentsAction, saveCommentAction} from '../../store/actions/comment.actions';
+import {fetchCommentsAction, removeCommentAction, saveCommentAction} from '../../store/actions/comment.actions';
 import {fetchComments, fetchCommentsIsLoading} from '../../store/selectors/comment.selector';
 import {Comment} from '../../models/comment.model';
 import {User} from '../../models/user.model';
@@ -26,10 +24,11 @@ export class CommentsComponent extends AutoUnsibscribeService implements OnInit,
   private productId: string;
   @select(fetchCommentsIsLoading)
   private isLoading: Observable<boolean>;
+  private currentUser: User;
   private commentForm: FormGroup;
   private comments: Comment[];
   private isComments = false;
-  private displayedColumns: string[] = ['User', 'Text', 'Date'];
+  private displayedColumns: string[] = ['User', 'Text', 'Date', 'Delete'];
 
   constructor(private fb: FormBuilder,
               private ngRedux: NgRedux<AppState>) {
@@ -44,6 +43,7 @@ export class CommentsComponent extends AutoUnsibscribeService implements OnInit,
         if(this.comments.length != 0) {
           this.isComments = true;
         }
+        this.currentUser = selectCurrentUser(this.ngRedux.getState());
       }
     });
 
@@ -64,8 +64,11 @@ export class CommentsComponent extends AutoUnsibscribeService implements OnInit,
       product: selectCurrentProduct(this.ngRedux.getState()),
       date: null
     };
-    console.log(saveComment);
     this.ngRedux.dispatch(saveCommentAction(saveComment));
+  }
+
+  private onRemoveComment(comment: Comment): void {
+    this.ngRedux.dispatch(removeCommentAction(comment.id));
   }
 
 }
