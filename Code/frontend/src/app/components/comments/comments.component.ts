@@ -69,6 +69,15 @@ export class CommentsComponent extends AutoUnsibscribeService implements OnInit,
 
   private onRemoveComment(comment: Comment): void {
     this.ngRedux.dispatch(removeCommentAction(comment.id));
+    this.isLoading.subscribe(result => {
+      this.isComments = false;
+      if(!result) {
+        this.comments = fetchComments(this.ngRedux.getState());
+        if(this.comments.length != 0) {
+          this.isComments = true;
+        }
+      }
+    });
   }
 
 }
