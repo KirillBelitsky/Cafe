@@ -6,10 +6,7 @@ import com.bsuir.belitsky.cafe.entity.UserToken;
 import com.bsuir.belitsky.cafe.services.AuthenticationService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/authentication")
@@ -32,5 +29,10 @@ public class AuthenticationController {
     @PostMapping("/register")
     public UserToken register(@RequestBody UserDto userDto) {
         return userDto != null ? authenticationService.register(modelMapper.map(userDto, User.class)) : null;
+    }
+
+    @GetMapping("/confirmVerificationEmail")
+    public void confirmVerificationEmail(@RequestParam(name = "token") String token) {
+        authenticationService.confirmVerificationEmail(token);
     }
 }

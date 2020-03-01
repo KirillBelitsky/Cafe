@@ -26,6 +26,9 @@ public class User {
     private String login;
     private String password;
 
+    @Column(name = "enabled")
+    private boolean isEnabled;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_role",
             joinColumns = @JoinColumn(name = "userid"),
@@ -39,6 +42,7 @@ public class User {
                 ", email='" + email + '\'' +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
+                ", isEnabled=" + isEnabled +
                 ", roles=" + roles +
                 '}';
     }

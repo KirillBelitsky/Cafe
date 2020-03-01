@@ -39,10 +39,22 @@ public class UserServiceImpl implements UserService {
             saveUser.setEmail(user.getEmail());
             saveUser.setPassword(passwordEncoder.encode(user.getPassword()));
             saveUser.setRoles(roles);
+            saveUser.setEnabled(false);
 
             return userRepository.save(saveUser);
         }
         return null;
+    }
+
+    @Override
+    public void enableUser(String id) {
+        if (id != null) {
+            User savedUser = userRepository.getUserById(id);
+            if (savedUser != null) {
+                savedUser.setEnabled(true);
+                userRepository.save(savedUser);
+            }
+        }
     }
 
     @Override

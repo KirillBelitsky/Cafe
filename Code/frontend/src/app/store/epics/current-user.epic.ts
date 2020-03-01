@@ -7,7 +7,7 @@ import {
   LOGIN_USER,
   loginUserActionFailed,
   LOGOUT_USER,
-  REGISTER_USER, registerUserActionSuccess,
+  REGISTER_USER, registerUserActionFailed, registerUserActionSuccess,
   updateCurrentUserAction
 } from '../actions/current-user.actions';
 import {catchError, map, switchMap} from 'rxjs/operators';
@@ -32,10 +32,13 @@ export class CurrentUserEpic {
         return this.authService.login(payload.credential)
           .pipe(
             map(userToken => {
-              this.localStorage.currentUser = userToken.user;
-              this.localStorage.currentToken = userToken.token;
-              this.ngRedux.dispatch(selectCurrentSalesOrderAction());
-              return updateCurrentUserAction(userToken.user);
+              if(userToken != null && userToken.user.enabled) {
+                this.localStorage.currentUser = userToken.user;
+                this.localStorage.currentToken = userToken.token;
+                this.ngRedux.dispatch(selectCurrentSalesOrderAction());
+                return updateCurrentUserAction(userToken.user);
+              }
+              return updateCurrentUserAction(null);
             }),
             catchError(err => {
               return of(loginUserActionFailed());
@@ -51,11 +54,10 @@ export class CurrentUserEpic {
         return this.authService.register(payload.credential)
           .pipe(
             map(userToken => {
-              of(registerUserActionSuccess());
-              this.localStorage.currentUser = userToken.user;
-              this.localStorage.currentToken = userToken.token;
-              this.ngRedux.dispatch(selectCurrentSalesOrderAction());
-              return updateCurrentUserAction(userToken.user);
+              return updateCurrentUserAction(null);
+            }),
+            catchError(err => {
+              return of(registerUserActionFailed());
             })
           );
         }

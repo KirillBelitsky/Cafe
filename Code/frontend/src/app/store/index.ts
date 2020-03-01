@@ -2,7 +2,6 @@ import {ProductState} from './reducers/product.reducer';
 import {User} from '../models/user.model';
 import {CurrentProductState} from './reducers/current-product.reducer';
 import {CommentState} from './reducers/comment.reducer';
-import {SalesOrder} from '../models/sales-order.model';
 import {CurrentMenuCategoryState} from './reducers/current-menu-category.reducer';
 import {CurrentSalesOrderState} from './reducers/current-sales-order.reducer';
 
