@@ -2,15 +2,9 @@ package com.bsuir.belitsky.cafe.services.impl;
 
 import  com.bsuir.belitsky.cafe.config.JwtTokenUtil;
 import com.bsuir.belitsky.cafe.dto.UserDto;
-import com.bsuir.belitsky.cafe.entity.AuthToken;
-import com.bsuir.belitsky.cafe.entity.User;
-import com.bsuir.belitsky.cafe.entity.UserToken;
-import com.bsuir.belitsky.cafe.entity.VerificationToken;
+import com.bsuir.belitsky.cafe.entity.*;
 import com.bsuir.belitsky.cafe.factory.Factory;
-import com.bsuir.belitsky.cafe.services.AuthenticationService;
-import com.bsuir.belitsky.cafe.services.EmailSenderService;
-import com.bsuir.belitsky.cafe.services.UserService;
-import com.bsuir.belitsky.cafe.services.VerificationTokenService;
+import com.bsuir.belitsky.cafe.services.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
