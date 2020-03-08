@@ -53,36 +53,35 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     }
 
     @Override
-    public UserToken login(User anonymous) {
+    public UserToken<AuthToken> login(User anonymous) throws Exception {
         try {
             User user = userService.getUserByLogin(anonymous.getLogin());
             if(user == null)
                 return null;
 
             String token = getToken(anonymous);
-            return new UserToken(modelMapper.map(user, UserDto.class), new AuthToken(token));
+            return new UserToken<>(modelMapper.map(user, UserDto.class), new AuthToken(token));
         } catch (AuthenticationException e){
             e.printStackTrace();
-            return null;
+            throw new Exception();
         }
     }
 
     @Override
-    public UserToken register(User user) {
+    public UserToken<AuthToken> register(User user) throws Exception {
         try {
             User savedUser = userService.saveUser(user);
             String token = getToken(user);
             sendVerificationEmail(savedUser);
-            return new UserToken(modelMapper.map(savedUser, UserDto.class), new AuthToken(token));
+            return new UserToken<>(modelMapper.map(savedUser, UserDto.class), new AuthToken(token));
         } catch (AuthenticationException e){
             e.printStackTrace();
-            return null;
+            throw new Exception();
         }
     }
 
     @Override
     public void confirmVerificationEmail(String token) {
-        System.out.println(token);
         VerificationToken verificationToken = verificationTokenService.findByToken(token);
         if (verificationToken != null) {
             Calendar calendar = Calendar.getInstance();

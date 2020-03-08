@@ -8,4 +8,6 @@ public class SecurityConstants {
 
     public static final int VERIFICATION_TOKEN_EXPIRATION = 60 * 25;
     public static final String EMAIL_USERNAME = "forfeedbackmail@gmail.com";
+
+    public static final String VERIFY_CAPTCHA_URL = "https://www.google.com/recaptcha/api/siteverify?secret=%s&response=%s";
 }

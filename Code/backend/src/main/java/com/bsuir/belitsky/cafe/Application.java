@@ -1,18 +1,11 @@
 package com.bsuir.belitsky.cafe;
 
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.BeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.orm.hibernate5.SpringBeanContainer;
-
-import java.beans.beancontext.BeanContext;
-import java.util.Properties;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
 public class Application {
@@ -24,5 +17,15 @@ public class Application {
     @Bean
     public ModelMapper getModelMapper() {
         return new ModelMapper();
+    }
+
+    @Bean
+    public RestTemplate getRestTemplate() {
+        return new RestTemplate();
+    }
+
+    @Bean
+    public WebClient getWebClient() {
+        return WebClient.create();
     }
 }

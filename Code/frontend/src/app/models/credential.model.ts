@@ -1,5 +1,6 @@
-export interface Credential {
-  readonly login: string;
-  readonly email: string;
-  readonly password: string;
+import {User} from './user.model';
+
+export class Credential {
+  user: User;
+  token: string;
 }

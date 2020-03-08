@@ -38,6 +38,7 @@ import {MenuCategoryService} from './services/menu-category.service';
 import {MatConfirmDialogComponent} from './components/dialogs/mat-confirmation-dialog/mat-confirm-dialog.component';
 import {MatConfirmDialogService} from './components/dialogs/mat-confirmation-dialog/mat-confirm-dialog.service';
 import {MatDialogModule} from '@angular/material/dialog';
+import {RecaptchaModule} from 'angular-google-recaptcha';
 
 const JWT_Module_Options: JwtModuleOptions = {
   config: {
@@ -71,6 +72,10 @@ const JWT_Module_Options: JwtModuleOptions = {
     DialogsModule,
     MatDialogModule,
     JwtModule.forRoot(JWT_Module_Options),
+    BrowserModule,
+    RecaptchaModule.forRoot({
+      siteKey: '6Lczb94UAAAAABtv704SAiRnAY3g1XUMHpl-X3P4'
+    })
   ],
   providers: [
     UserService,

@@ -7,11 +7,11 @@
      </mat-form-field>
     <mat-form-field>
       <input matInput placeholder="Password" [formControlName]="'password'" required>
-
     </mat-form-field>
+    <div #recaptcha ></div>
   </form>
   <div class="edit-user-controls">
-     <button mat-button color="primary" [disabled]="credentialForm.invalid" (click)="onLoginClick()" cdkFocusInitial>
+     <button mat-button color="primary" [disabled]="credentialForm.invalid || !isCaptchaTokenReady" (click)="onLoginClick()" cdkFocusInitial>
         Login
      </button>
      <button mat-button color="warn" (click)=onCancelClick()>Cancel</button>

@@ -24,7 +24,6 @@ public class EmailSenderServiceImpl implements EmailSenderService {
     @Override
     public void sendEmail(VerificationToken verificationToken) throws MailException {
         SimpleMailMessage message = createVerificationEmail(verificationToken);
-        System.out.println(message);
         mailSender.send(message);
     }
 
